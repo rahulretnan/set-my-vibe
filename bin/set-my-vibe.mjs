@@ -82,8 +82,8 @@ function selected(pos,opts,state) {
 }
 async function main(args) {
  const {opts,pos}=parse(args);const cmd=pos.shift()||'help';
- if(cmd==='help'||opts.help){console.log(help);return;}
  if(opts.version||cmd==='version'){console.log('0.1.0');return;}
+ if(cmd==='help'||opts.help){console.log(help);return;}
  const [major,minor]=process.versions.node.split('.').map(Number);
  if(major<22||(major===22&&minor<20))throw Error('Node.js 22.20+ required. Run install.sh to bootstrap a private runtime.');
  const ctx=context();

@@ -39,7 +39,7 @@ esac\n`);
 }
 for(const platform of ['Linux','Darwin'])test(`bootstrap ${platform} no-Node path verifies artifacts and creates working quoted launcher`,t=>{
  const f=fixture(t,{platform});const r=f.run();assert.equal(r.status,0,r.stderr);const launcher=path.join(f.prefix,'bin/set-my-vibe');assert.ok(fs.existsSync(launcher));
- const version=spawnSync('bash',[launcher,'--version'],{env:f.env,encoding:'utf8'});assert.equal(version.status,0,version.stderr);assert.match(version.stdout,/0\.1\.0/);
+ const version=spawnSync('bash',[launcher,'--version'],{env:f.env,encoding:'utf8'});assert.equal(version.status,0,version.stderr);assert.equal(version.stdout,'0.1.0\n');
  assert.equal(fs.existsSync(path.join(f.prefix,'state.json')),false);assert.equal(fs.existsSync(path.join(f.prefix,'bootstrap.lock')),false);
  assert.equal(f.run().status,0,'bootstrap is repeatable');
 });
