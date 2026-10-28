@@ -1,0 +1,1867 @@
+[
+  {
+    "id": "homebrew",
+    "name": "Homebrew",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "brew"
+    },
+    "install": {
+      "all": {
+        "script": "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh",
+        "args": [],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "shell",
+        "text": "Run set-my-vibe configure shell for Homebrew PATH integration."
+      },
+      {
+        "id": "prerequisites",
+        "text": "Linux requires Homebrew-supported glibc, build tools and sudo access for initial prefix setup. Follow https://docs.brew.sh/Homebrew-on-Linux. macOS requires supported Xcode command-line tools."
+      }
+    ],
+    "docs": "https://brew.sh"
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "git"
+    },
+    "install": {
+      "darwin": {
+        "brew": "git"
+      },
+      "linux": {
+        "brew": "git"
+      }
+    },
+    "steps": [
+      {
+        "id": "identity",
+        "text": "Set git user.name and user.email for each identity; configure SSH or HTTPS authentication."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/git"
+  },
+  {
+    "id": "zsh",
+    "name": "Zsh",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "zsh"
+    },
+    "install": {
+      "darwin": {
+        "brew": "zsh"
+      },
+      "linux": {
+        "brew": "zsh"
+      }
+    },
+    "steps": [
+      {
+        "id": "default-shell",
+        "text": "If desired, use chsh to select your installed zsh; then open a new terminal."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/zsh"
+  },
+  {
+    "id": "direnv",
+    "name": "direnv",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "direnv"
+    },
+    "install": {
+      "darwin": {
+        "brew": "direnv"
+      },
+      "linux": {
+        "brew": "direnv"
+      }
+    },
+    "steps": [
+      {
+        "id": "shell",
+        "text": "Run set-my-vibe configure shell. Review each project .envrc before direnv allow."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/direnv"
+  },
+  {
+    "id": "gh",
+    "name": "GitHub CLI",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "gh"
+    },
+    "install": {
+      "darwin": {
+        "brew": "gh"
+      },
+      "linux": {
+        "brew": "gh"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run gh auth login.",
+        "probe": {
+          "argv": [
+            "gh",
+            "auth",
+            "status"
+          ],
+          "success": "exit"
+        }
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/gh"
+  },
+  {
+    "id": "jq",
+    "name": "jq",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "jq"
+    },
+    "install": {
+      "darwin": {
+        "brew": "jq"
+      },
+      "linux": {
+        "brew": "jq"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/jq"
+  },
+  {
+    "id": "ripgrep",
+    "name": "ripgrep",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "rg"
+    },
+    "install": {
+      "darwin": {
+        "brew": "ripgrep"
+      },
+      "linux": {
+        "brew": "ripgrep"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/ripgrep"
+  },
+  {
+    "id": "tmux",
+    "name": "tmux",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "tmux"
+    },
+    "install": {
+      "darwin": {
+        "brew": "tmux"
+      },
+      "linux": {
+        "brew": "tmux"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/tmux"
+  },
+  {
+    "id": "tree",
+    "name": "tree",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "tree"
+    },
+    "install": {
+      "darwin": {
+        "brew": "tree"
+      },
+      "linux": {
+        "brew": "tree"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/tree"
+  },
+  {
+    "id": "wget",
+    "name": "wget",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "wget"
+    },
+    "install": {
+      "darwin": {
+        "brew": "wget"
+      },
+      "linux": {
+        "brew": "wget"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/wget"
+  },
+  {
+    "id": "gnupg",
+    "name": "GnuPG",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "gpg"
+    },
+    "install": {
+      "darwin": {
+        "brew": "gnupg"
+      },
+      "linux": {
+        "brew": "gnupg"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/gnupg"
+  },
+  {
+    "id": "node",
+    "name": "Node.js LTS",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "node"
+    },
+    "install": {
+      "darwin": {
+        "brew": "node@24"
+      },
+      "linux": {
+        "brew": "node@24"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/node@24"
+  },
+  {
+    "id": "go",
+    "name": "Go",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "go"
+    },
+    "install": {
+      "darwin": {
+        "brew": "go"
+      },
+      "linux": {
+        "brew": "go"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/go"
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "python3.13"
+    },
+    "install": {
+      "darwin": {
+        "brew": "python@3.13"
+      },
+      "linux": {
+        "brew": "python@3.13"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/python@3.13"
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "ruby"
+    },
+    "install": {
+      "darwin": {
+        "brew": "ruby"
+      },
+      "linux": {
+        "brew": "ruby"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/ruby"
+  },
+  {
+    "id": "java",
+    "name": "OpenJDK 17",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "javac"
+    },
+    "install": {
+      "darwin": {
+        "brew": "openjdk@17"
+      },
+      "linux": {
+        "brew": "openjdk@17"
+      }
+    },
+    "steps": [
+      {
+        "id": "jdk",
+        "text": "Set JAVA_HOME to JDK 17 and verify java -version; configure Android Studio Gradle JDK."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/openjdk@17"
+  },
+  {
+    "id": "cmake",
+    "name": "CMake",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "cmake"
+    },
+    "install": {
+      "darwin": {
+        "brew": "cmake"
+      },
+      "linux": {
+        "brew": "cmake"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/cmake"
+  },
+  {
+    "id": "cloudflared",
+    "name": "Cloudflare Tunnel",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "cloudflared"
+    },
+    "install": {
+      "darwin": {
+        "brew": "cloudflared"
+      },
+      "linux": {
+        "brew": "cloudflared"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run cloudflared tunnel login only when you need a tunnel."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/cloudflared"
+  },
+  {
+    "id": "aws",
+    "name": "AWS CLI",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "aws"
+    },
+    "install": {
+      "darwin": {
+        "brew": "awscli"
+      },
+      "linux": {
+        "brew": "awscli"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run aws configure sso and aws sso login for your profile.",
+        "probe": {
+          "argv": [
+            "aws",
+            "sts",
+            "get-caller-identity"
+          ],
+          "success": "exit"
+        }
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/awscli"
+  },
+  {
+    "id": "pulumi",
+    "name": "Pulumi",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "pulumi"
+    },
+    "install": {
+      "darwin": {
+        "brew": "pulumi"
+      },
+      "linux": {
+        "brew": "pulumi"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run pulumi login and choose your backend."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/pulumi"
+  },
+  {
+    "id": "railway",
+    "name": "Railway",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "railway"
+    },
+    "install": {
+      "darwin": {
+        "brew": "railway"
+      },
+      "linux": {
+        "brew": "railway"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run railway login."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/railway"
+  },
+  {
+    "id": "render",
+    "name": "Render CLI",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "render"
+    },
+    "install": {
+      "darwin": {
+        "brew": "render"
+      },
+      "linux": {
+        "brew": "render"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run render login."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/render"
+  },
+  {
+    "id": "turso",
+    "name": "Turso",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "turso"
+    },
+    "install": {
+      "darwin": {
+        "brew": "turso"
+      },
+      "linux": {
+        "brew": "turso"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run turso auth login."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/turso"
+  },
+  {
+    "id": "supabase",
+    "name": "Supabase",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "supabase"
+    },
+    "install": {
+      "darwin": {
+        "brew": "supabase"
+      },
+      "linux": {
+        "brew": "supabase"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run supabase login."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/supabase"
+  },
+  {
+    "id": "postgres",
+    "name": "PostgreSQL 16",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "psql"
+    },
+    "install": {
+      "darwin": {
+        "brew": "postgresql@16"
+      },
+      "linux": {
+        "brew": "postgresql@16"
+      }
+    },
+    "steps": [
+      {
+        "id": "service",
+        "text": "Initialize and start the database deliberately, then set access controls and backups. Installing does not start a service."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/postgresql@16"
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "mysql"
+    },
+    "install": {
+      "darwin": {
+        "brew": "mysql"
+      },
+      "linux": {
+        "brew": "mysql"
+      }
+    },
+    "steps": [
+      {
+        "id": "service",
+        "text": "Initialize and start the database deliberately, then set access controls and backups. Installing does not start a service."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/mysql"
+  },
+  {
+    "id": "sqlite",
+    "name": "SQLite",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "sqlite3"
+    },
+    "install": {
+      "darwin": {
+        "brew": "sqlite"
+      },
+      "linux": {
+        "brew": "sqlite"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/sqlite"
+  },
+  {
+    "id": "ffmpeg",
+    "name": "FFmpeg",
+    "group": "media",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "ffmpeg"
+    },
+    "install": {
+      "darwin": {
+        "brew": "ffmpeg"
+      },
+      "linux": {
+        "brew": "ffmpeg"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/ffmpeg"
+  },
+  {
+    "id": "poppler",
+    "name": "Poppler PDF tools",
+    "group": "media",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "pdftoppm"
+    },
+    "install": {
+      "darwin": {
+        "brew": "poppler"
+      },
+      "linux": {
+        "brew": "poppler"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/poppler"
+  },
+  {
+    "id": "tesseract",
+    "name": "Tesseract OCR",
+    "group": "media",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "tesseract"
+    },
+    "install": {
+      "darwin": {
+        "brew": "tesseract"
+      },
+      "linux": {
+        "brew": "tesseract"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/tesseract"
+  },
+  {
+    "id": "scrcpy",
+    "name": "scrcpy",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "scrcpy"
+    },
+    "install": {
+      "darwin": {
+        "brew": "scrcpy"
+      },
+      "linux": {
+        "brew": "scrcpy"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/scrcpy"
+  },
+  {
+    "id": "watchman",
+    "name": "Watchman",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "watchman"
+    },
+    "install": {
+      "darwin": {
+        "brew": "watchman"
+      },
+      "linux": {
+        "brew": "watchman"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/watchman"
+  },
+  {
+    "id": "bundletool",
+    "name": "Android bundletool",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "bundletool"
+    },
+    "install": {
+      "darwin": {
+        "brew": "bundletool"
+      },
+      "linux": {
+        "brew": "bundletool"
+      }
+    },
+    "steps": [],
+    "docs": "https://formulae.brew.sh/formula/bundletool"
+  },
+  {
+    "id": "mkcert",
+    "name": "mkcert",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "mkcert"
+    },
+    "install": {
+      "darwin": {
+        "brew": "mkcert"
+      },
+      "linux": {
+        "brew": "mkcert"
+      }
+    },
+    "steps": [
+      {
+        "id": "trust",
+        "text": "Run mkcert -install only if you want to trust a local development CA."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/mkcert"
+  },
+  {
+    "id": "livekit",
+    "name": "LiveKit CLI",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "lk"
+    },
+    "install": {
+      "darwin": {
+        "brew": "livekit-cli"
+      },
+      "linux": {
+        "brew": "livekit-cli"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run lk cloud auth for LiveKit Cloud."
+      }
+    ],
+    "docs": "https://formulae.brew.sh/formula/livekit-cli"
+  },
+  {
+    "id": "nvm",
+    "name": "Node Version Manager",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "file": ".nvm/nvm.sh"
+    },
+    "install": {
+      "all": {
+        "script": "https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.8/install.sh",
+        "args": [],
+        "env": {
+          "PROFILE": "/dev/null"
+        }
+      }
+    },
+    "steps": [
+      {
+        "id": "shell",
+        "text": "Run set-my-vibe configure shell, open a new terminal, then nvm install --lts and nvm alias default lts/*."
+      }
+    ],
+    "docs": "https://github.com/nvm-sh/nvm"
+  },
+  {
+    "id": "bun",
+    "name": "Bun",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "bun"
+    },
+    "install": {
+      "all": {
+        "script": "https://bun.com/install",
+        "args": [],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "shell",
+        "text": "Open a new terminal or run set-my-vibe configure shell if Bun is not on PATH. Linux installation needs unzip."
+      }
+    ],
+    "docs": "https://bun.com/docs/installation"
+  },
+  {
+    "id": "pnpm",
+    "name": "pnpm",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "pnpm"
+    },
+    "install": {
+      "all": {
+        "npm": "pnpm"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.npmjs.com/package/pnpm"
+  },
+  {
+    "id": "rust",
+    "name": "Rust / Cargo (rustup)",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "commands": [
+        "rustc",
+        "cargo",
+        "rustup"
+      ]
+    },
+    "install": {
+      "all": {
+        "script": "https://sh.rustup.rs",
+        "args": [
+          "-y",
+          "--no-modify-path"
+        ],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "build-tools",
+        "text": "Install the OS C/C++ linker and build tools before compiling native crates (Xcode command-line tools on macOS; distribution build tools on Linux)."
+      }
+    ],
+    "docs": "https://rust-lang.org/tools/install/"
+  },
+  {
+    "id": "uv",
+    "name": "uv",
+    "group": "languages",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "uv"
+    },
+    "install": {
+      "all": {
+        "script": "https://astral.sh/uv/install.sh",
+        "args": [],
+        "env": {
+          "UV_NO_MODIFY_PATH": "1"
+        }
+      }
+    },
+    "steps": [],
+    "docs": "https://docs.astral.sh/uv/"
+  },
+  {
+    "id": "envx",
+    "name": "envx",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "envx"
+    },
+    "install": {
+      "all": {
+        "npm": "envx-cli"
+      }
+    },
+    "steps": [
+      {
+        "id": "project",
+        "text": "Run envx init in each project. Keep .envrc, plaintext env files and passphrases out of Git."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/envx-cli",
+    "dependencies": [
+      "gnupg"
+    ]
+  },
+  {
+    "id": "dotenvx",
+    "name": "dotenvx",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "dotenvx"
+    },
+    "install": {
+      "all": {
+        "npm": "@dotenvx/dotenvx"
+      }
+    },
+    "steps": [],
+    "docs": "https://dotenvx.com/docs/install"
+  },
+  {
+    "id": "claude",
+    "name": "Claude Code",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "claude"
+    },
+    "install": {
+      "all": {
+        "script": "https://claude.ai/install.sh",
+        "args": [],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run claude auth login.",
+        "probe": {
+          "argv": [
+            "claude",
+            "auth",
+            "status",
+            "--json"
+          ],
+          "success": "json",
+          "field": "loggedIn"
+        }
+      }
+    ],
+    "docs": "https://code.claude.com/docs/en/setup"
+  },
+  {
+    "id": "codex",
+    "name": "Codex CLI",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "codex"
+    },
+    "install": {
+      "all": {
+        "npm": "@openai/codex"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run codex login.",
+        "probe": {
+          "argv": [
+            "codex",
+            "login",
+            "status"
+          ],
+          "success": "exit"
+        }
+      }
+    ],
+    "docs": "https://developers.openai.com/codex/cli"
+  },
+  {
+    "id": "cursor-agent",
+    "name": "Cursor Agent CLI",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "agent"
+    },
+    "install": {
+      "all": {
+        "script": "https://cursor.com/install",
+        "args": [],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run agent login."
+      }
+    ],
+    "docs": "https://cursor.com/docs/cli/installation"
+  },
+  {
+    "id": "antigravity",
+    "name": "Antigravity CLI",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "agy"
+    },
+    "install": {
+      "all": {
+        "script": "https://antigravity.google/cli/install.sh",
+        "args": [],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run agy and complete provider sign-in."
+      }
+    ],
+    "docs": "https://antigravity.google/download"
+  },
+  {
+    "id": "t3",
+    "name": "T3 Code CLI",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "t3"
+    },
+    "install": {
+      "all": {
+        "script": "https://t3.codes/install.sh",
+        "args": [],
+        "env": {}
+      }
+    },
+    "steps": [
+      {
+        "id": "providers",
+        "text": "Run t3 and connect your installed coding agents. The background service is optional."
+      }
+    ],
+    "docs": "https://github.com/pingdotgg/t3code",
+    "unsupportedArch": {
+      "darwin": [
+        "x64"
+      ]
+    }
+  },
+  {
+    "id": "gemini",
+    "name": "Gemini CLI",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "gemini"
+    },
+    "install": {
+      "all": {
+        "npm": "@google/gemini-cli"
+      }
+    },
+    "steps": [
+      {
+        "id": "login",
+        "text": "Run gemini and complete sign-in."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/@google/gemini-cli"
+  },
+  {
+    "id": "skills",
+    "name": "skills.sh CLI",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "skills"
+    },
+    "install": {
+      "all": {
+        "npm": "skills"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.npmjs.com/package/skills"
+  },
+  {
+    "id": "agent-browser",
+    "name": "Agent Browser",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "agent-browser"
+    },
+    "install": {
+      "all": {
+        "npm": "agent-browser"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run agent-browser install to download its browser. Linux may need OS browser libraries."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/agent-browser"
+  },
+  {
+    "id": "agent-device",
+    "name": "Agent Device",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "agent-device"
+    },
+    "install": {
+      "all": {
+        "npm": "agent-device"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Connect a device or create an emulator/simulator, then verify agent-device list."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/agent-device"
+  },
+  {
+    "id": "wrangler",
+    "name": "Cloudflare Wrangler",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "wrangler"
+    },
+    "install": {
+      "all": {
+        "npm": "wrangler"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run wrangler login. Configure account, bindings, environments and secrets in each project."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/wrangler"
+  },
+  {
+    "id": "neon",
+    "name": "Neon CLI",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "neon"
+    },
+    "install": {
+      "all": {
+        "npm": "neon"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run neon login, select your organization and explicitly create or link a project."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/neon"
+  },
+  {
+    "id": "upstash",
+    "name": "Upstash CLI",
+    "group": "data",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "upstash"
+    },
+    "install": {
+      "all": {
+        "npm": "upstash"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run upstash --help for current authentication options; configure credentials locally, never in Git."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/upstash"
+  },
+  {
+    "id": "vercel",
+    "name": "Vercel CLI",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "vercel"
+    },
+    "install": {
+      "all": {
+        "npm": "vercel"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run vercel login; link projects deliberately."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/vercel"
+  },
+  {
+    "id": "eas",
+    "name": "Expo EAS CLI",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "eas"
+    },
+    "install": {
+      "all": {
+        "npm": "eas-cli"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run eas login; configure credentials and builds per project."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/eas-cli"
+  },
+  {
+    "id": "sentry",
+    "name": "Sentry CLI",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "sentry-cli"
+    },
+    "install": {
+      "all": {
+        "npm": "@sentry/cli"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run sentry-cli login; select organization and project per app."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/@sentry/cli"
+  },
+  {
+    "id": "posthog",
+    "name": "PostHog CLI",
+    "group": "cloud",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "posthog-cli"
+    },
+    "install": {
+      "all": {
+        "npm": "@posthog/cli"
+      }
+    },
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Run posthog-cli --help to configure your project and local authentication."
+      }
+    ],
+    "docs": "https://www.npmjs.com/package/@posthog/cli"
+  },
+  {
+    "id": "hyperframes",
+    "name": "HyperFrames",
+    "group": "media",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "hyperframes"
+    },
+    "install": {
+      "all": {
+        "npm": "hyperframes"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.npmjs.com/package/hyperframes"
+  },
+  {
+    "id": "mobilecli",
+    "name": "Mobile CLI",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "mobilecli"
+    },
+    "install": {
+      "all": {
+        "npm": "mobilecli"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.npmjs.com/package/mobilecli"
+  },
+  {
+    "id": "mobilewright",
+    "name": "Mobilewright",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "mobilewright"
+    },
+    "install": {
+      "all": {
+        "npm": "mobilewright"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.npmjs.com/package/mobilewright"
+  },
+  {
+    "id": "cursor",
+    "name": "Cursor",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "Cursor.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "cursor"
+      }
+    },
+    "steps": [],
+    "docs": "https://cursor.com/downloads",
+    "manual": "Download the Linux build from https://cursor.com/downloads"
+  },
+  {
+    "id": "antigravity-app",
+    "name": "Antigravity",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "Antigravity.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "antigravity"
+      }
+    },
+    "steps": [],
+    "docs": "https://antigravity.google/download",
+    "manual": "Download the Linux build from https://antigravity.google/download"
+  },
+  {
+    "id": "t3-desktop",
+    "name": "T3 Code",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "T3 Code.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "t3-code"
+      }
+    },
+    "steps": [],
+    "docs": "https://github.com/pingdotgg/t3code/releases",
+    "manual": "Download the Linux build from https://github.com/pingdotgg/t3code/releases"
+  },
+  {
+    "id": "zed",
+    "name": "Zed",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "Zed.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "zed"
+      }
+    },
+    "steps": [],
+    "docs": "https://zed.dev/download",
+    "manual": "Download the Linux build from https://zed.dev/download"
+  },
+  {
+    "id": "ghostty",
+    "name": "Ghostty",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "Ghostty.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "ghostty"
+      }
+    },
+    "steps": [],
+    "docs": "https://ghostty.org/download",
+    "manual": "Download the Linux build from https://ghostty.org/download"
+  },
+  {
+    "id": "warp",
+    "name": "Warp",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "Warp.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "warp"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.warp.dev/download",
+    "manual": "Download the Linux build from https://www.warp.dev/download"
+  },
+  {
+    "id": "gitkraken",
+    "name": "GitKraken",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "GitKraken.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "gitkraken"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.gitkraken.com/download",
+    "manual": "Download the Linux build from https://www.gitkraken.com/download"
+  },
+  {
+    "id": "datagrip",
+    "name": "DataGrip",
+    "group": "editors",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "DataGrip.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "datagrip"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.jetbrains.com/datagrip/download/",
+    "manual": "Download the Linux build from https://www.jetbrains.com/datagrip/download/"
+  },
+  {
+    "id": "cmux",
+    "name": "cmux",
+    "group": "editors",
+    "platforms": [
+      "darwin"
+    ],
+    "detect": {
+      "app": "cmux.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "cmux"
+      }
+    },
+    "steps": [],
+    "docs": "https://www.cmux.dev/",
+    "manual": "Download the Linux build from https://www.cmux.dev/"
+  },
+  {
+    "id": "docker",
+    "name": "Docker Desktop",
+    "group": "containers",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "docker"
+    },
+    "install": {
+      "darwin": {
+        "cask": "docker-desktop"
+      }
+    },
+    "steps": [
+      {
+        "id": "daemon",
+        "text": "Start Docker Desktop (macOS) or install/start Docker Engine or Desktop for your Linux distribution.",
+        "probe": {
+          "argv": [
+            "docker",
+            "info"
+          ],
+          "success": "exit"
+        }
+      },
+      {
+        "id": "license",
+        "text": "Review Docker Desktop licensing for your organization before use."
+      }
+    ],
+    "docs": "https://docs.docker.com/get-started/get-docker/",
+    "manual": "Download the Linux build from https://docs.docker.com/get-started/get-docker/"
+  },
+  {
+    "id": "android-studio",
+    "name": "Android Studio",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "app": "Android Studio.app"
+    },
+    "install": {
+      "darwin": {
+        "cask": "android-studio"
+      }
+    },
+    "steps": [
+      {
+        "id": "sdk",
+        "text": "Open SDK Manager. Install platform tools, command-line tools, emulator and project-required SDK/build-tools; create an AVD and accept licenses interactively."
+      }
+    ],
+    "docs": "https://developer.android.com/studio",
+    "manual": "Download the Linux build from https://developer.android.com/studio"
+  },
+  {
+    "id": "android-tools",
+    "name": "Android Platform Tools",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "adb"
+    },
+    "install": {
+      "darwin": {
+        "cask": "android-platform-tools"
+      }
+    },
+    "steps": [],
+    "docs": "https://developer.android.com/tools/releases/platform-tools",
+    "manual": "Install platform-tools using Android Studio SDK Manager on Linux."
+  },
+  {
+    "id": "xcode",
+    "name": "Xcode",
+    "group": "mobile",
+    "platforms": [
+      "darwin"
+    ],
+    "detect": {
+      "app": "Xcode.app"
+    },
+    "install": {},
+    "steps": [
+      {
+        "id": "first-launch",
+        "text": "Open Xcode, accept its license and install required simulator runtimes. Select the intended developer directory.",
+        "probe": {
+          "argv": [
+            "xcodebuild",
+            "-checkFirstLaunchStatus"
+          ],
+          "success": "exit"
+        }
+      }
+    ],
+    "docs": "https://developer.apple.com/xcode/",
+    "manual": "Install Xcode from the Mac App Store or Apple Developer downloads."
+  },
+  {
+    "id": "xtool",
+    "name": "xtool (Swift iOS builds)",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "xtool"
+    },
+    "install": {
+      "darwin": {
+        "brew": "xtool-org/tap/xtool"
+      }
+    },
+    "steps": [
+      {
+        "id": "sdk",
+        "text": "Run xtool setup; configure Apple signing and verify a device build."
+      }
+    ],
+    "docs": "https://xtool.sh",
+    "manual": "On Linux, follow https://xtool.sh/documentation/xtooldocs/installation-linux for Swift and Darwin SDK prerequisites."
+  },
+  {
+    "id": "flutter",
+    "name": "Flutter / FVM",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "flutter"
+    },
+    "install": {},
+    "steps": [
+      {
+        "id": "doctor",
+        "text": "Run flutter doctor and resolve SDK, license and device checks."
+      }
+    ],
+    "docs": "https://docs.flutter.dev/install",
+    "manual": "Install Flutter following the official platform guide; optionally manage versions with FVM."
+  },
+  {
+    "id": "cua-driver",
+    "name": "CUA Driver",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "cua-driver"
+    },
+    "install": {},
+    "steps": [],
+    "docs": "https://github.com/search?q=cua-driver&type=repositories",
+    "manual": "Install your chosen CUA Driver distribution; grant OS accessibility/screen recording only when needed."
+  }
+]

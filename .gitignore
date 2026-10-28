@@ -1,0 +1,14 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+.envrc
+*.pem
+*.key
+*.p12
+*.mobileprovision
+coverage/
+dist/
+.local/
+*.log

@@ -1,0 +1,332 @@
+[
+  {
+    "id": "agent-browser",
+    "source": "vercel-labs/agent-browser",
+    "skill": "agent-browser",
+    "group": "general"
+  },
+  {
+    "id": "agent-device",
+    "source": "callstack/agent-device",
+    "skill": "agent-device",
+    "group": "general"
+  },
+  {
+    "id": "animate",
+    "source": "emilkowalski/skill",
+    "skill": "animate",
+    "group": "design"
+  },
+  {
+    "id": "animate-expo",
+    "source": "emilkowalski/skill",
+    "skill": "animate-expo",
+    "group": "design"
+  },
+  {
+    "id": "animation-vocabulary",
+    "source": "emilkowalski/skill",
+    "skill": "animation-vocabulary",
+    "group": "design"
+  },
+  {
+    "id": "apple-design",
+    "source": "emilkowalski/skill",
+    "skill": "apple-design",
+    "group": "design"
+  },
+  {
+    "id": "archify",
+    "source": "tt-a1i/archify",
+    "skill": "archify",
+    "group": "general"
+  },
+  {
+    "id": "ask-sonner",
+    "source": "emilkowalski/skill",
+    "skill": "ask-sonner",
+    "group": "design"
+  },
+  {
+    "id": "brag",
+    "source": "latent-spaces/brag",
+    "skill": "brag",
+    "group": "general"
+  },
+  {
+    "id": "cmux",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-architecture",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-architecture",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-backend",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-backend",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-billing",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-billing",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-browser",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-browser",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-custom-sidebar",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-custom-sidebar",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-customization",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-customization",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-debugging",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-debugging",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-dev-workflow",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-dev-workflow",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-diagnostics",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-diagnostics",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-ghostty",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-ghostty",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-keyboard-shortcuts",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-keyboard-shortcuts",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-localization",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-localization",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-markdown",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-markdown",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-release",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-release",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-settings",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-settings",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-shared-behavior",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-shared-behavior",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-socket-policy",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-socket-policy",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-testing",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-testing",
+    "group": "cmux"
+  },
+  {
+    "id": "cmux-workspace",
+    "source": "manaflow-ai/cmux",
+    "skill": "cmux-workspace",
+    "group": "cmux"
+  },
+  {
+    "id": "design-taste-frontend",
+    "source": "Leonxlnx/taste-skill",
+    "skill": "design-taste-frontend",
+    "group": "general"
+  },
+  {
+    "id": "emil-design-eng",
+    "source": "emilkowalski/skill",
+    "skill": "emil-design-eng",
+    "group": "design"
+  },
+  {
+    "id": "envx",
+    "source": "rahulretnan/envx-cli",
+    "skill": "envx",
+    "group": "general"
+  },
+  {
+    "id": "figma",
+    "source": "heygen-com/hyperframes",
+    "skill": "figma",
+    "group": "video"
+  },
+  {
+    "id": "find-animation-opportunities",
+    "source": "emilkowalski/skill",
+    "skill": "find-animation-opportunities",
+    "group": "design"
+  },
+  {
+    "id": "find-skills",
+    "source": "vercel-labs/skills",
+    "skill": "find-skills",
+    "group": "general"
+  },
+  {
+    "id": "hyperframes",
+    "source": "heygen-com/hyperframes",
+    "skill": "hyperframes",
+    "group": "video"
+  },
+  {
+    "id": "hyperframes-cli",
+    "source": "heygen-com/hyperframes",
+    "skill": "hyperframes-cli",
+    "group": "video"
+  },
+  {
+    "id": "hyperframes-registry",
+    "source": "heygen-com/hyperframes",
+    "skill": "hyperframes-registry",
+    "group": "video"
+  },
+  {
+    "id": "img2threejs",
+    "source": "img2threejs/img2threejs",
+    "skill": "img2threejs",
+    "group": "general"
+  },
+  {
+    "id": "impeccable",
+    "source": "pbakaus/impeccable",
+    "skill": "impeccable",
+    "group": "general"
+  },
+  {
+    "id": "improve-animations",
+    "source": "emilkowalski/skill",
+    "skill": "improve-animations",
+    "group": "design"
+  },
+  {
+    "id": "mastra",
+    "source": "mastra-ai/skills",
+    "skill": "mastra",
+    "group": "general"
+  },
+  {
+    "id": "media-use",
+    "source": "heygen-com/hyperframes",
+    "skill": "media-use",
+    "group": "video"
+  },
+  {
+    "id": "mobile-native",
+    "source": "emilkowalski/skill",
+    "skill": "mobile-native",
+    "group": "design"
+  },
+  {
+    "id": "motion-design",
+    "source": "LottieFiles/motion-design-skill",
+    "skill": "motion-design",
+    "group": "general"
+  },
+  {
+    "id": "pick-ui-library",
+    "source": "emilkowalski/skill",
+    "skill": "pick-ui-library",
+    "group": "design"
+  },
+  {
+    "id": "prototype",
+    "source": "emilkowalski/skill",
+    "skill": "prototype",
+    "group": "design"
+  },
+  {
+    "id": "remotion-to-hyperframes",
+    "source": "heygen-com/hyperframes",
+    "skill": "remotion-to-hyperframes",
+    "group": "video"
+  },
+  {
+    "id": "reverse-engineer-anything",
+    "source": "morluto/rea",
+    "skill": "reverse-engineer-anything",
+    "group": "general"
+  },
+  {
+    "id": "review-animations",
+    "source": "emilkowalski/skill",
+    "skill": "review-animations",
+    "group": "design"
+  },
+  {
+    "id": "slideshow",
+    "source": "heygen-com/hyperframes",
+    "skill": "slideshow",
+    "group": "video"
+  },
+  {
+    "id": "task-observer",
+    "source": "rebelytics/one-skill-to-rule-them-all",
+    "skill": "task-observer",
+    "group": "general"
+  },
+  {
+    "id": "typesafe-ai",
+    "source": "typesafe-ai/skills",
+    "skill": "typesafe-ai",
+    "group": "general"
+  },
+  {
+    "id": "watch",
+    "source": "bradautomates/claude-video",
+    "skill": "watch",
+    "group": "general"
+  },
+  {
+    "id": "write-swift",
+    "source": "emilkowalski/skill",
+    "skill": "write-swift",
+    "group": "design"
+  }
+]

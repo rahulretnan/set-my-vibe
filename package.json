@@ -1,0 +1,12 @@
+{
+  "name": "set-my-vibe",
+  "version": "0.1.0",
+  "description": "Selectable developer workstation setup, skills and project recipes for macOS and Linux.",
+  "type": "module",
+  "bin": { "set-my-vibe": "bin/set-my-vibe.mjs" },
+  "engines": { "node": ">=22.20.0" },
+  "scripts": { "test": "node --test", "check": "node scripts/validate.mjs", "audit:public": "node scripts/audit-public.mjs" },
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/rahulretnan/set-my-vibe.git" },
+  "files": ["bin", "lib", "catalog", "skills", "docs", "README.md", "LICENSE"]
+}
