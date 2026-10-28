@@ -9,35 +9,37 @@ MIT licensed. No runtime dependencies. No personal dotfiles or credentials inclu
 ## Quick start
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.0/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.1/install.sh | bash
 ```
 
 This installs the CLI and opens a numbered tool selector when an interactive terminal is available. Choose tool numbers, IDs or a profile name, review the commands, then confirm. It does **not** install the whole catalog by default.
 
 The bootstrap needs Bash, curl, tar, awk and a SHA-256 utility. It uses an existing Node.js 22.20+ or downloads a private Node 24 LTS runtime. It verifies downloaded archives against the publisher's SHA-256 file. It requires no existing npm, Git or Homebrew. Run as your regular user, without `sudo`.
 
-The default command location is `~/.local/bin/set-my-vibe`. If it is not already on PATH:
+Use `smv` as the short command. `set-my-vibe` remains available and uses the same configuration and state. Both work with every subcommand.
+
+The default command locations are `~/.local/bin/smv` and `~/.local/bin/set-my-vibe`. If it is not already on PATH:
 
 ```sh
 export PATH="$HOME/.local/bin:$PATH"
-set-my-vibe configure shell
+smv configure shell
 ```
 
 For an inspect-first installation:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.0/install.sh -o install-set-my-vibe.sh
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.1/install.sh -o install-set-my-vibe.sh
 less install-set-my-vibe.sh
 bash install-set-my-vibe.sh --no-setup
-~/.local/bin/set-my-vibe plan --profile web
-~/.local/bin/set-my-vibe install --profile web
+~/.local/bin/smv plan --profile web
+~/.local/bin/smv install --profile web
 ```
 
 Custom isolated location:
 
 ```sh
 bash install-set-my-vibe.sh --prefix "$HOME/vibe-tools" --no-setup
-"$HOME/vibe-tools/bin/set-my-vibe" list
+"$HOME/vibe-tools/bin/smv" list
 ```
 
 This is a GitHub release. An npm registry publication is not required or assumed. To run from source:
@@ -51,14 +53,14 @@ node bin/set-my-vibe.mjs setup
 ## Choose what to install
 
 ```sh
-set-my-vibe list
-set-my-vibe list --group ai
-set-my-vibe profiles
-set-my-vibe plan bun pnpm go rust uv claude codex
-set-my-vibe install bun pnpm go rust uv claude codex
-set-my-vibe install --profile cloudflare --dry-run --json
-set-my-vibe install --profile web --yes
-set-my-vibe resume
+smv list
+smv list --group ai
+smv profiles
+smv plan bun pnpm go rust uv claude codex
+smv install bun pnpm go rust uv claude codex
+smv install --profile cloudflare --dry-run --json
+smv install --profile web --yes
+smv resume
 ```
 
 Profiles:
@@ -83,11 +85,11 @@ See [the complete tool catalog](docs/CATALOG.md) for IDs, installation methods a
 ## See unfinished setup
 
 ```sh
-set-my-vibe status
-set-my-vibe status --all
-set-my-vibe status gh aws docker codex
-set-my-vibe status --verify
-set-my-vibe status --json
+smv status
+smv status --all
+smv status gh aws docker codex
+smv status --verify
+smv status --json
 ```
 
 `status` uses the saved selection, or the whole catalog before a selection exists. Installation and configuration are separate:
@@ -104,9 +106,9 @@ Normal status is local and does not read credentials or make network requests. `
 For manual steps, use the IDs shown by status:
 
 ```sh
-set-my-vibe mark neon setup
-set-my-vibe mark git identity
-set-my-vibe mark git identity --undo
+smv mark neon setup
+smv mark git identity
+smv mark git identity --undo
 ```
 
 A manual confirmation is never presented as verified evidence. Provider login remains in the provider's own CLI or app. No keys are transferred between machines.
@@ -114,8 +116,8 @@ A manual confirmation is never presented as verified evidence. Provider login re
 ## Shell setup
 
 ```sh
-set-my-vibe configure shell --dry-run
-set-my-vibe configure shell
+smv configure shell --dry-run
+smv configure shell
 ```
 
 This writes a generated shell snippet and appends a source line to `.zshrc` and `.bashrc`. It adds managed tool paths, Homebrew shell initialization, NVM loading and the matching direnv hook. Existing dotfile content is preserved. It does not change your default shell or automatically run `direnv allow` on a project.
@@ -127,13 +129,13 @@ Repeated runs use a separate marker to avoid duplicate source lines without read
 The catalog references the public GitHub sources recorded in the workstation's skills.sh lock metadata. It installs the named skills through the upstream skills CLI, without copying personal agent state or silently selecting every agent.
 
 ```sh
-set-my-vibe skills list
-set-my-vibe skills list --group design
-set-my-vibe skills plan envx agent-browser --agents codex,claude-code
-set-my-vibe skills install envx agent-browser --agents codex,claude-code
-set-my-vibe skills install --group design --agents cursor
-set-my-vibe skills install --all --agents codex,claude-code --yes
-set-my-vibe skills status
+smv skills list
+smv skills list --group design
+smv skills plan envx agent-browser --agents codex,claude-code
+smv skills install envx agent-browser --agents codex,claude-code
+smv skills install --group design --agents cursor
+smv skills install --all --agents codex,claude-code --yes
+smv skills status
 ```
 
 Supported targets: `codex`, `claude-code`, `cursor`, `gemini-cli`, `antigravity`. Default targets are Codex and Claude Code. The `--all` option selects every catalog skill, while `--agents` stays explicit. Existing skill files at selected targets are skipped; updates remain an upstream `skills update` operation. Target detection checks `SKILL.md` presence, not source integrity or whether the agent has reloaded it.
@@ -155,15 +157,15 @@ Then ask your agent to inspect the workstation, propose a tool plan, resolve pen
 ## Start a project
 
 ```sh
-set-my-vibe project list
-set-my-vibe project better-t-stack my-app
-set-my-vibe project better-t-stack my-app --run
-set-my-vibe project cloudflare my-worker --run
-set-my-vibe project neon my-saas --run
-set-my-vibe project upstash my-service --run
-set-my-vibe project next my-site --run
-set-my-vibe project expo my-mobile-app --run
-set-my-vibe project shadcn --cwd ./my-site --run
+smv project list
+smv project better-t-stack my-app
+smv project better-t-stack my-app --run
+smv project cloudflare my-worker --run
+smv project neon my-saas --run
+smv project upstash my-service --run
+smv project next my-site --run
+smv project expo my-mobile-app --run
+smv project shadcn --cwd ./my-site --run
 ```
 
 Without `--run`, these print the exact command and setup guide. `--run` executes the upstream interactive generator after confirmation; add `--yes` to skip the wrapper confirmation. Bun is required. New projects need a new directory name containing lowercase letters, digits and hyphens. Existing directories are never overwritten by a new-project recipe. Use `--cwd` to choose the parent directory.
@@ -177,7 +179,7 @@ Without `--run`, these print the exact command and setup guide. `--run` executes
 New projects receive `VIBE-SETUP.md` after successful generation. It records the remaining service setup and production checks. Follow upstream prompts carefully: a generator may offer integrations or account actions. No deploy/provision command is appended by this wrapper. If a generator fails, its partial files are retained for inspection.
 
 ```sh
-set-my-vibe project check --cwd ./my-app
+smv project check --cwd ./my-app
 ```
 
 This reports familiar check scripts and CI-directory presence. It does not run tests or certify the app. Use [the production checklist](docs/PRODUCTION.md) to collect actual evidence for persistence, authorization, tenant isolation, secrets, failure recovery, tests, real browser/device journeys, observability, backups and rollback.
@@ -185,16 +187,16 @@ This reports familiar check scripts and CI-directory presence. It does not run t
 ## Move your selection to another machine
 
 ```sh
-set-my-vibe scan --json
-set-my-vibe export > vibe-intent.json
+smv scan --json
+smv export > vibe-intent.json
 # Or export the catalog tools detected on the current machine:
-set-my-vibe export --detected > vibe-intent.json
+smv export --detected > vibe-intent.json
 
 # On the destination:
-set-my-vibe install --from vibe-intent.json --dry-run
-set-my-vibe install --from vibe-intent.json
-set-my-vibe skills install --from vibe-intent.json
-set-my-vibe status
+smv install --from vibe-intent.json --dry-run
+smv install --from vibe-intent.json
+smv skills install --from vibe-intent.json
+smv status
 ```
 
 Exports contain tool IDs, selected skill IDs and agent names only. Tool and skill restoration are separate commands. If no skills were selected, skip the skill restore command. The portable skill manifest installs all exported skills to the exported agent set; local status keeps the individual target choices made on this machine. There are no usernames, home paths, account IDs, tokens or environment values in this format. It records intent, not locked versions or a complete backup. Imports cannot provide arbitrary shell commands.
@@ -220,7 +222,7 @@ Unsupported and manual steps stay visible; they are never silently reported as i
 
 Default locations:
 
-- `~/.local/bin/set-my-vibe`: launcher.
+- `~/.local/bin/smv` and `~/.local/bin/set-my-vibe`: equivalent launchers.
 - `~/.local/share/set-my-vibe/releases/`: versioned CLI files.
 - `~/.local/share/set-my-vibe/runtime/`: private Node, only when needed.
 - `~/.local/share/set-my-vibe/npm/`: npm tools installed by this CLI.
@@ -231,7 +233,7 @@ Default locations:
 
 Re-run the bootstrap with `--version vX.Y.Z --no-setup` for an existing published release. The launcher switches only after validation. Keep older release directories for rollback; using an older version should be evaluated against its state format. Update third-party tools with their own documented package manager; `resume` does not upgrade tools already detected.
 
-To uninstall, remove the managed launcher and the source lines added to your shell files. Inspect the data directory before removing it: deleting it also removes tools installed into its npm prefix and a private Node runtime. Installed Homebrew/native tools, skills, projects and provider credentials remain managed separately. There is no destructive blanket-uninstall command.
+To uninstall, remove both managed launchers and the source lines added to your shell files. Inspect the data directory before removing it: deleting it also removes tools installed into its npm prefix and a private Node runtime. Installed Homebrew/native tools, skills, projects and provider credentials remain managed separately. There is no destructive blanket-uninstall command.
 
 ## Troubleshooting
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bootstrap set-my-vibe without requiring Node, npm, Homebrew, or Git.
 set -euo pipefail
-VERSION=v0.1.0
+VERSION=v0.1.1
 PREFIX="${SET_MY_VIBE_HOME:-$HOME/.local/share/set-my-vibe}"
 BIN_DIR="$HOME/.local/bin"
 NO_SETUP=0
@@ -80,21 +80,28 @@ if [ -e "$DEST" ]; then
   # Same release is immutable; retain existing files and verify their CLI is usable.
   "$NODE" "$DEST/bin/set-my-vibe.mjs" --version >/dev/null
 else mv "$TMP/app" "$DEST"; fi
-LAUNCHER="$BIN_DIR/set-my-vibe"
-if [ -e "$LAUNCHER" ] || [ -L "$LAUNCHER" ]; then
-  if ! head -n 3 "$LAUNCHER" | awk '/# set-my-vibe managed launcher/{found=1} END{exit !found}'; then echo 'Refusing to overwrite an unrelated set-my-vibe executable.' >&2; exit 1; fi
-fi
+LAUNCHER="$BIN_DIR/smv"
+for command_name in smv set-my-vibe; do
+  candidate="$BIN_DIR/$command_name"
+  if [ -e "$candidate" ] || [ -L "$candidate" ]; then
+    if ! head -n 3 "$candidate" | awk '/# set-my-vibe managed launcher/{found=1} END{exit !found}'; then echo "Refusing to overwrite an unrelated $command_name executable." >&2; exit 1; fi
+  fi
+done
 # Node writes the wrapper with correct shell quoting even for spaces/apostrophes.
-"$NODE" --input-type=module - "$PREFIX" "$NODE" "$DEST" "$LAUNCHER" <<'JS'
+"$NODE" --input-type=module - "$PREFIX" "$NODE" "$DEST" "$BIN_DIR" <<'JS'
 import fs from 'node:fs';
-const [prefix,node,dest,launcher]=process.argv.slice(2);
+const [prefix,node,dest,binDir]=process.argv.slice(2);
 const q=s=>"'"+s.replaceAll("'","'\\''")+"'";
 const content=`#!/usr/bin/env bash\n# set-my-vibe managed launcher\nexport SET_MY_VIBE_HOME=${q(prefix)}\nexport PATH=${q(node.slice(0,node.lastIndexOf('/')))}:"$PATH"\nexec ${q(node)} ${q(dest+'/bin/set-my-vibe.mjs')} "$@"\n`;
-fs.writeFileSync(launcher+'.tmp',content,{mode:0o755});fs.renameSync(launcher+'.tmp',launcher);
+for (const name of ['smv', 'set-my-vibe']) {
+  const launcher=binDir+'/'+name;
+  fs.writeFileSync(launcher+'.tmp',content,{mode:0o755,flag:'wx'});
+  fs.renameSync(launcher+'.tmp',launcher);
+}
 JS
-echo "Installed $LAUNCHER"
+echo "Installed $LAUNCHER (also available as set-my-vibe)"
 echo "Add $BIN_DIR to PATH, or use the full path above."
-echo 'Run set-my-vibe configure shell to opt into shell hooks.'
+echo 'Run smv configure shell to opt into shell hooks.'
 if [ "$NO_SETUP" -eq 0 ] && [ -t 1 ] && ( : </dev/tty ) 2>/dev/null; then
   "$LAUNCHER" setup </dev/tty
-else echo 'Run set-my-vibe setup when ready to select tools.'; fi
+else echo 'Run smv setup when ready to select tools.'; fi

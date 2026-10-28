@@ -1,9 +1,9 @@
 {
   "name": "set-my-vibe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Selectable developer workstation setup, skills and project recipes for macOS and Linux.",
   "type": "module",
-  "bin": { "set-my-vibe": "bin/set-my-vibe.mjs" },
+  "bin": { "smv": "bin/set-my-vibe.mjs", "set-my-vibe": "bin/set-my-vibe.mjs" },
   "engines": { "node": ">=22.20.0" },
   "scripts": { "test": "node --test", "check": "node scripts/validate.mjs", "audit:public": "node scripts/audit-public.mjs" },
   "license": "MIT",

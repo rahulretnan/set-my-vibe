@@ -5,7 +5,7 @@ on:
       version:
         description: Published release tag
         required: true
-        default: v0.1.0
+        default: v0.1.1
   release:
     types: [published]
 permissions:
@@ -33,7 +33,8 @@ jobs:
           mkdir -p "$HOME"
           curl --fail --silent --show-error --location "https://raw.githubusercontent.com/rahulretnan/set-my-vibe/refs/tags/$RELEASE_VERSION/install.sh" -o "$VIBE_TEST_DIR/install.sh"
           bash "$VIBE_TEST_DIR/install.sh" --version "$RELEASE_VERSION" --prefix "$VIBE_TEST_DIR/tools" --no-setup
-          VIBE_CLI="$VIBE_TEST_DIR/tools/bin/set-my-vibe"
+          VIBE_CLI="$VIBE_TEST_DIR/tools/bin/smv"
+          [ "$("$VIBE_TEST_DIR/tools/bin/set-my-vibe" --version)" = "${RELEASE_VERSION#v}" ]
           [ "$("$VIBE_CLI" --version)" = "${RELEASE_VERSION#v}" ]
           "$VIBE_CLI" plan --profile cloudflare --json > "$VIBE_TEST_DIR/plan.json"
           "$VIBE_CLI" install upstash --yes
