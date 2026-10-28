@@ -1,0 +1,51 @@
+name: Release smoke
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Published release tag
+        required: true
+        default: v0.1.0
+  release:
+    types: [published]
+permissions:
+  contents: read
+jobs:
+  bootstrap-and-install:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Bootstrap published release and install in an isolated home
+        shell: bash
+        env:
+          RELEASE_VERSION: ${{ inputs.version || github.event.release.tag_name }}
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          VIBE_TEST_DIR=$(mktemp -d)
+          export HOME="$VIBE_TEST_DIR/home"
+          mkdir -p "$HOME"
+          curl --fail --silent --show-error --location "https://raw.githubusercontent.com/rahulretnan/set-my-vibe/refs/tags/$RELEASE_VERSION/install.sh" -o "$VIBE_TEST_DIR/install.sh"
+          bash "$VIBE_TEST_DIR/install.sh" --version "$RELEASE_VERSION" --prefix "$VIBE_TEST_DIR/tools" --no-setup
+          VIBE_CLI="$VIBE_TEST_DIR/tools/bin/set-my-vibe"
+          [ "$("$VIBE_CLI" --version)" = "${RELEASE_VERSION#v}" ]
+          "$VIBE_CLI" plan --profile cloudflare --json > "$VIBE_TEST_DIR/plan.json"
+          "$VIBE_CLI" install upstash --yes
+          "$VIBE_CLI" install upstash --yes
+          "$VIBE_CLI" status upstash --json > "$VIBE_TEST_DIR/status.json"
+          node --input-type=module - "$VIBE_TEST_DIR/status.json" <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const [row]=JSON.parse(fs.readFileSync(process.argv[2],'utf8'));
+          assert.equal(row.installation,'installed');
+          assert.equal(row.steps[0].state,'pending');
+          JS
+          [ ! -e "$HOME/.zshrc" ]
+          [ ! -e "$HOME/.bashrc" ]
+          echo 'Public bootstrap, real isolated package installation, repeat install and pending setup checks passed.'
