@@ -25,7 +25,7 @@ The catalog includes **80 developer tools, 63 public skills, 6 profiles and 7 pr
 ## Quick start
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.1/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.2/install.sh | bash
 ```
 
 The installer adds `smv` and opens an interactive selector when a terminal is available. Choose tool IDs, numbers or a profile, review the plan, then confirm installation.
@@ -50,7 +50,7 @@ smv configure shell
 <summary>Review the installer first, or update without opening setup</summary>
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.1/install.sh -o install-set-my-vibe.sh
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.2/install.sh -o install-set-my-vibe.sh
 less install-set-my-vibe.sh
 bash install-set-my-vibe.sh --no-setup
 ```

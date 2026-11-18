@@ -7,7 +7,7 @@ description: Set up or migrate a macOS or Linux coding workstation (Homebrew, zs
 
 Use the CLI for repeatable installation and evidence. Use your judgment for project-specific architecture, configuration and verification.
 
-1. Locate `smv` (alias of `set-my-vibe`). If absent, bootstrap it as the regular user, never with `sudo`, using the pinned release line from the README at https://github.com/rahulretnan/set-my-vibe (currently `curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.1/install.sh | bash`). Do not assume an npm release exists.
+1. Locate `smv` (alias of `set-my-vibe`). If absent, bootstrap it as the regular user, never with `sudo`, using the pinned release line from the README at https://github.com/rahulretnan/set-my-vibe (currently `curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.2/install.sh | bash`). Do not assume an npm release exists.
 2. Run `set-my-vibe scan --json` and `set-my-vibe status --json`. These inspect the catalog without reading credentials. Select only relevant tools using `list`, `profiles` and `plan --profile NAME --json`.
 3. Show or review the exact installation plan within the user's authorized scope. Install with explicit IDs or profiles. `--yes` skips this CLI's confirmation, not upstream sudo prompts or licenses. Do not run `--all` unless the user wants the whole catalog.
    To copy another machine's setup: on the old machine run `smv export --detected > vibe-intent.json`; on the new one run `smv install --from vibe-intent.json --dry-run`, then without `--dry-run`, then `smv skills install --from vibe-intent.json`. Exports hold only tool IDs, skill IDs and agent names. If an install stops partway, `smv resume` retries the saved selection.
