@@ -5,7 +5,7 @@ Detailed installation, configuration, migration and troubleshooting instructions
 ## Quick start
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.6/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.7/install.sh | bash
 ```
 
 This installs the CLI and opens a checkbox picker in an interactive terminal. Start with a profile or a custom selection, review the commands, then confirm.
@@ -24,7 +24,7 @@ smv configure shell
 For an inspect-first installation:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.6/install.sh -o install-set-my-vibe.sh
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.7/install.sh -o install-set-my-vibe.sh
 less install-set-my-vibe.sh
 bash install-set-my-vibe.sh --no-setup
 ~/.local/bin/smv plan --profile web

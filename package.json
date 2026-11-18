@@ -1,6 +1,6 @@
 {
   "name": "set-my-vibe",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Selectable developer workstation setup, skills and project recipes for macOS and Linux.",
   "type": "module",
   "bin": {

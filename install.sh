@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bootstrap set-my-vibe without requiring Node, npm, Homebrew, or Git.
 set -euo pipefail
-VERSION=v0.1.6
+VERSION=v0.1.7
 PREFIX="${SET_MY_VIBE_HOME:-$HOME/.local/share/set-my-vibe}"
 BIN_DIR="$HOME/.local/bin"
 NO_SETUP=0
