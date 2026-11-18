@@ -28,9 +28,10 @@ jobs:
           set -euo pipefail
           bash scripts/release.sh
           release_dir=$(mktemp -d)
+          trap 'rm -rf "$release_dir"' EXIT
           tar -xzf dist/set-my-vibe.tar.gz -C "$release_dir"
           cd "$release_dir/set-my-vibe"
-          node --input-type=module -e "await import('./lib/picker.mjs')"
+          node --test test/ux.test.mjs
           node bin/set-my-vibe.mjs --version
   secret-scan:
     runs-on: ubuntu-latest

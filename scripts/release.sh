@@ -6,7 +6,8 @@ mkdir -p dist
 staging=$(mktemp -d)
 trap 'rm -rf "$staging"' EXIT
 git archive --format=tar --prefix=set-my-vibe/ HEAD | tar -xf - -C "$staging"
-npm ci --prefix "$staging/set-my-vibe" --omit=dev --ignore-scripts --no-audit --no-fund
+# Run npm from the staged project so it resolves that project and lockfile.
+(cd "$staging/set-my-vibe" && npm ci --omit=dev --ignore-scripts --no-audit --no-fund)
 # BSD tar can emit AppleDouble files and extended attributes on macOS.
 COPYFILE_DISABLE=1 tar --no-xattrs -C "$staging" -cf - set-my-vibe | gzip -n > "$staging/release.tar.gz"
 tar -tzf "$staging/release.tar.gz" > "$staging/entries"
