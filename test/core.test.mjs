@@ -57,3 +57,14 @@ test('shadcn requires existing package.json, project check does not claim tests 
 test('script download failure never executes partial content and temp is cleaned',t=>{const ctx=fixture(t);const calls=[];const item=plan(['bun'],ctx)[0];assert.equal(executeInstall(item,ctx,argv=>{calls.push(argv);return {status:22};}),false);assert.equal(calls.length,1);assert.equal(fs.existsSync(calls[0].at(-1)),false);});
 test('npm prefix is passed as one literal argument without shell evaluation',t=>{const ctx=fixture(t);ctx.data=path.join(ctx.home,'path with spaces $(id)');const cmd=commands(plan(['codex'],ctx)[0],ctx)[0];assert.equal(cmd[4],path.join(ctx.data,'npm'));});
 test('CLI works through a symlink as installed package binaries do',t=>{const ctx=fixture(t);const f=path.join(ctx.home,'set-my-vibe');fs.symlinkSync(path.join(root,'bin/set-my-vibe.mjs'),f);const r=spawnSync(process.execPath,[f,'--version'],{encoding:'utf8'});assert.equal(r.status,0);assert.equal(r.stdout,'0.1.2\n');});
+
+test('Better Fullstack powers new stack and service recipes while legacy keeps its original generator',t=>{
+ const ctx=fixture(t);
+ for(const id of ['better-fullstack','neon','upstash']){
+  const p=projectPlan(id,'my-app',ctx.home);
+  assert.deepEqual(p.argv.slice(0,4),['bun','create','better-fullstack@latest','my-app']);
+  assert.ok(p.argv.includes('--no-install')&&p.argv.includes('--no-git'));
+  assert.ok(!fs.existsSync(p.target));
+ }
+ assert.deepEqual(projectPlan('better-t-stack','my-app',ctx.home).argv,['bunx','create-better-t-stack@latest','my-app']);
+});

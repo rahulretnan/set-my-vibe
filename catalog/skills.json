@@ -1,5 +1,11 @@
 [
   {
+    "id": "add-to-project",
+    "source": "Marve10s/Better-Fullstack",
+    "skill": "add-to-project",
+    "group": "general"
+  },
+  {
     "id": "agent-browser",
     "source": "vercel-labs/agent-browser",
     "skill": "agent-browser",
@@ -46,6 +52,24 @@
     "source": "emilkowalski/skill",
     "skill": "ask-sonner",
     "group": "design"
+  },
+  {
+    "id": "better-auth-best-practices",
+    "source": "better-auth/skills",
+    "skill": "better-auth-best-practices",
+    "group": "general"
+  },
+  {
+    "id": "better-auth-security-best-practices",
+    "source": "better-auth/skills",
+    "skill": "better-auth-security-best-practices",
+    "group": "general"
+  },
+  {
+    "id": "better-fullstack",
+    "source": "Marve10s/Better-Fullstack",
+    "skill": "better-fullstack",
+    "group": "general"
   },
   {
     "id": "brag",
@@ -174,9 +198,21 @@
     "group": "cmux"
   },
   {
+    "id": "create-auth",
+    "source": "better-auth/skills",
+    "skill": "create-auth",
+    "group": "general"
+  },
+  {
     "id": "design-taste-frontend",
     "source": "Leonxlnx/taste-skill",
     "skill": "design-taste-frontend",
+    "group": "general"
+  },
+  {
+    "id": "email-and-password-best-practices",
+    "source": "better-auth/skills",
+    "skill": "email-and-password-best-practices",
     "group": "general"
   },
   {
@@ -208,6 +244,12 @@
     "source": "vercel-labs/skills",
     "skill": "find-skills",
     "group": "general"
+  },
+  {
+    "id": "frontend-design",
+    "source": "Marve10s/Better-Fullstack",
+    "skill": "frontend-design",
+    "group": "design"
   },
   {
     "id": "gsap-core",
@@ -318,10 +360,64 @@
     "group": "general"
   },
   {
+    "id": "neon",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon",
+    "group": "general"
+  },
+  {
+    "id": "neon-ai-gateway",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon-ai-gateway",
+    "group": "general"
+  },
+  {
+    "id": "neon-auth",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon-auth",
+    "group": "general"
+  },
+  {
+    "id": "neon-functions",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon-functions",
+    "group": "general"
+  },
+  {
+    "id": "neon-object-storage",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon-object-storage",
+    "group": "general"
+  },
+  {
+    "id": "neon-postgres",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon-postgres",
+    "group": "general"
+  },
+  {
+    "id": "neon-realtime",
+    "source": "neondatabase/agent-skills",
+    "skill": "neon-realtime",
+    "group": "general"
+  },
+  {
+    "id": "organization-best-practices",
+    "source": "better-auth/skills",
+    "skill": "organization-best-practices",
+    "group": "general"
+  },
+  {
     "id": "pick-ui-library",
     "source": "emilkowalski/skill",
     "skill": "pick-ui-library",
     "group": "design"
+  },
+  {
+    "id": "postgres-best-practices",
+    "source": "neondatabase/postgres-skills",
+    "skill": "postgres-best-practices",
+    "group": "general"
   },
   {
     "id": "prototype",
@@ -348,6 +444,12 @@
     "group": "design"
   },
   {
+    "id": "scaffold-project",
+    "source": "Marve10s/Better-Fullstack",
+    "skill": "scaffold-project",
+    "group": "general"
+  },
+  {
     "id": "slideshow",
     "source": "heygen-com/hyperframes",
     "skill": "slideshow",
@@ -360,9 +462,69 @@
     "group": "general"
   },
   {
+    "id": "two-factor-authentication-best-practices",
+    "source": "better-auth/skills",
+    "skill": "two-factor-authentication-best-practices",
+    "group": "general"
+  },
+  {
     "id": "typesafe-ai",
     "source": "typesafe-ai/skills",
     "skill": "typesafe-ai",
+    "group": "general"
+  },
+  {
+    "id": "understand",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand",
+    "group": "general"
+  },
+  {
+    "id": "understand-chat",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-chat",
+    "group": "general"
+  },
+  {
+    "id": "understand-dashboard",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-dashboard",
+    "group": "general"
+  },
+  {
+    "id": "understand-diff",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-diff",
+    "group": "general"
+  },
+  {
+    "id": "understand-domain",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-domain",
+    "group": "general"
+  },
+  {
+    "id": "understand-explain",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-explain",
+    "group": "general"
+  },
+  {
+    "id": "understand-figma",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-figma",
+    "group": "general"
+  },
+  {
+    "id": "understand-knowledge",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-knowledge",
+    "group": "general"
+  },
+  {
+    "id": "understand-onboard",
+    "source": "egonex-ai/understand-anything",
+    "skill": "understand-onboard",
     "group": "general"
   },
   {
@@ -370,6 +532,12 @@
     "source": "bradautomates/claude-video",
     "skill": "watch",
     "group": "general"
+  },
+  {
+    "id": "web-design-guidelines",
+    "source": "Marve10s/Better-Fullstack",
+    "skill": "web-design-guidelines",
+    "group": "design"
   },
   {
     "id": "write-swift",

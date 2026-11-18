@@ -154,8 +154,8 @@ Then ask your agent to inspect the workstation, propose a tool plan, resolve pen
 
 ```sh
 smv project list
-smv project better-t-stack my-app
-smv project better-t-stack my-app --run
+smv project better-fullstack my-app
+smv project better-fullstack my-app --run
 smv project cloudflare my-worker --run
 smv project neon my-saas --run
 smv project upstash my-service --run
@@ -167,9 +167,10 @@ smv project shadcn --cwd ./my-site --run
 Without `--run`, these print the exact command and setup guide. `--run` executes the upstream interactive generator after confirmation; add `--yes` to skip the wrapper confirmation. Bun is required. New projects need a new directory name containing lowercase letters, digits and hyphens. Existing directories are never overwritten by a new-project recipe. Use `--cwd` to choose the parent directory.
 
 - `shadcn` runs `bunx shadcn@latest init` in an existing project.
-- `better-t-stack` runs the current interactive Better-T-Stack generator so users can choose their own architecture.
+- `better-fullstack` opens the Better Fullstack wizard. Its recipes scaffold files without installing dependencies or initializing Git.
+- `better-t-stack` retains the original Better-T-Stack generator for legacy workflows.
 - `cloudflare` uses Cloudflare's generator with initial deployment disabled.
-- `neon` and `upstash` use Better-T-Stack plus a service-specific setup guide. They do not claim to inject a working database, cache, auth system or production integration automatically.
+- `neon` and `upstash` use Better Fullstack plus a service-specific setup guide. They do not claim to inject a working database, cache, auth system or production integration automatically.
 - `next` and `expo` use their official generators.
 
 New projects receive `VIBE-SETUP.md` after successful generation. It records the remaining service setup and production checks. Follow upstream prompts carefully: a generator may offer integrations or account actions. No deploy/provision command is appended by this wrapper. If a generator fails, its partial files are retained for inspection.

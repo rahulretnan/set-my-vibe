@@ -8,7 +8,7 @@ The catalog covers language runtimes, shell utilities, AI coding agents, cloud/d
 
 ## Skills with public provenance
 
-The initial skills.sh metadata provided 55 named skills across 18 public GitHub repositories. A later inventory added eight official GSAP skills, bringing the catalog to 63 skills across 19 public repositories. The repository stores only source/name references. Source accessibility was checked anonymously; upstream licensing remains applicable and is not replaced by this repository's MIT license.
+The initial skills.sh metadata provided 55 named skills across 18 public GitHub repositories. A later inventory added eight official GSAP skills, bringing the catalog to 63 skills across 19 public repositories. The Better Fullstack refresh added 28 skills from five public repositories, bringing the catalog to 91. The repository stores only source/name references. Source accessibility was checked anonymously; upstream licensing remains applicable and is not replaced by this repository's MIT license.
 
 ## Skills outside automatic migration
 

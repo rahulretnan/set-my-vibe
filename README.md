@@ -17,10 +17,10 @@ Set My Vibe (`smv`) is an open-source CLI for setting up a development environme
 - **Configuration tracking.** See which tools still need login, shell integration, SDKs or manual setup.
 - **Resumable installation.** Skip available tools, retain failed attempts, and retry your saved selection.
 - **Public AI skills.** Install named skills from their original repositories into the coding agents you choose.
-- **Project starters.** Use shadcn, Better-T-Stack, Cloudflare, Next.js and Expo, with additional Neon and Upstash setup guides.
+- **Project starters.** Use shadcn, Better Fullstack, Cloudflare, Next.js and Expo, with additional Neon and Upstash setup guides.
 - **Portable selections.** Export tool and skill choices without copying credentials or personal dotfiles.
 
-The catalog includes **80 developer tools, 63 public skills, 6 profiles and 7 project recipes**. Browse the [complete catalog](docs/CATALOG.md) for installation methods and sources.
+The catalog includes **80 developer tools, 91 public skills, 6 profiles and 8 project recipes**. Browse the [complete catalog](docs/CATALOG.md) for installation methods and sources.
 
 ## Quick start
 
@@ -149,8 +149,8 @@ The [workflow skill](skills/set-my-vibe/SKILL.md) helps an agent use CLI evidenc
 Preview a recipe, then use `--run` to execute its upstream generator:
 
 ```sh
-smv project better-t-stack my-app
-smv project better-t-stack my-app --run
+smv project better-fullstack my-app
+smv project better-fullstack my-app --run
 
 smv project cloudflare my-worker --run
 smv project neon my-saas --run
@@ -162,7 +162,9 @@ smv project expo my-mobile-app --run
 smv project shadcn --cwd ./my-site --run
 ```
 
-Bun is required. New-project recipes require an unused directory name. The Cloudflare recipe disables initial deployment. Neon and Upstash recipes generate a Better-T-Stack app with a service-specific setup guide; application integration still needs implementation and verification.
+Better Fullstack is the recommended full-stack recipe. Use `smv project better-t-stack my-app --run` for the legacy generator. The Better Fullstack recipes skip dependency installation and Git initialization. Follow the generated README when you are ready for those steps.
+
+Bun is required. New-project recipes require an unused directory name. The Cloudflare recipe disables initial deployment. Neon and Upstash recipes generate a Better Fullstack app with a service-specific setup guide; application integration still needs implementation and verification.
 
 New projects receive `VIBE-SETUP.md` after successful generation. It lists remaining configuration and checks for persistence, authorization, secrets, recovery, observability and deployment.
 
