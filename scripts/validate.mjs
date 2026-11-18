@@ -15,4 +15,10 @@ for(const t of tools){
 for(const p of ['darwin','linux'])for(const a of ['arm64','x64'])for(const ids of Object.values(profiles))plan(ids,context({platform:p,arch:a}));
 for(const s of skills){assert.match(s.source,/^[\w.-]+\/[\w.-]+$/);assert.match(s.skill,/^[a-z0-9-]+$/);}
 for(const r of recipes){assert.ok(['bun','bunx'].includes(r.command[0]));assert.ok(r.tools.every(id=>tools.some(t=>t.id===id)));}
+const legacyGenerator = /^(?:create-)?better-t-stack(?:@|$)/;
+const legacyRecipes = recipes.filter(recipe =>
+ [...recipe.command, ...(recipe.suffix || [])].some(arg => legacyGenerator.test(arg))
+);
+assert.deepEqual(legacyRecipes.map(recipe => recipe.id), ['better-t-stack'],
+ 'Only the explicitly selected legacy recipe may invoke Better-T-Stack');
 console.log(`Validated ${tools.length} tools, ${skills.length} skills, ${Object.keys(profiles).length} profiles and ${recipes.length} recipes.`);

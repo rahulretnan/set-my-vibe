@@ -164,7 +164,7 @@ smv project expo my-mobile-app --run
 smv project shadcn --cwd ./my-site --run
 ```
 
-Without `--run`, these print the exact command and setup guide. `--run` executes the upstream interactive generator after confirmation; add `--yes` to skip the wrapper confirmation. Bun is required. New projects need a new directory name containing lowercase letters, digits and hyphens. Existing directories are never overwritten by a new-project recipe. Use `--cwd` to choose the parent directory.
+Without `--run`, SMV prints the command and setup guide without invoking the generator. With `--run`, SMV confirms the action and launches the upstream generator. Adding `--yes` skips the SMV confirmation. The generator can still prompt for stack choices. Bun is required. New projects need a new directory name containing lowercase letters, digits and hyphens. Existing directories are never overwritten by a new-project recipe. Use `--cwd` to choose the parent directory.
 
 - `shadcn` runs `bunx shadcn@latest init` in an existing project.
 - `better-fullstack` opens the Better Fullstack wizard. Its recipes scaffold files without installing dependencies or initializing Git.
@@ -180,6 +180,18 @@ smv project check --cwd ./my-app
 ```
 
 This reports familiar check scripts and CI-directory presence. It does not run tests or certify the app. Use [the production checklist](PRODUCTION.md) to collect actual evidence for persistence, authorization, tenant isolation, secrets, failure recovery, tests, real browser/device journeys, observability, backups and rollback.
+
+### Better Fullstack setup
+
+Use `better-fullstack` for a general full-stack project. After the wizard completes, follow the generated README to install the selected stack's dependencies and run it locally. Initialize Git separately if needed. SMV requests an error on directory conflicts and disables generator analytics.
+
+Use `neon` when you want the PostgreSQL setup guide. Choose PostgreSQL and a compatible ORM in the wizard, then follow `VIBE-SETUP.md` to configure the database connection and migrations. Use `upstash` when you want the Redis or QStash setup guide. Choose a compatible app stack and follow the guide to configure the SDK and service credentials. Both recipes open the same wizard and leave service provisioning to you.
+
+For scripted scaffolding, use the [upstream Better Fullstack CLI](https://better-fullstack.dev/docs/cli/create) with explicit stack choices. Its `--dry-run` previews generated files. SMV's preview shows the generator command before launch. Keep `--no-install --no-git` if you only want scaffold files.
+
+### Legacy Better-T-Stack
+
+Select `smv project better-t-stack my-app --run` to run the original generator. Other recipes use their own generators. To switch an existing automation to Better Fullstack, change the recipe ID and review the new generator options and output before running it. Recipe selection applies to new projects and does not migrate existing apps.
 
 ## Move your selection to another machine
 

@@ -166,6 +166,8 @@ Better Fullstack is the recommended full-stack recipe. Use `smv project better-t
 
 Bun is required. New-project recipes require an unused directory name. The Cloudflare recipe disables initial deployment. Neon and Upstash recipes generate a Better Fullstack app with a service-specific setup guide; application integration still needs implementation and verification.
 
+See the [project setup guide](docs/USAGE.md#better-fullstack-setup) for generator options, service setup, and legacy workflows.
+
 New projects receive `VIBE-SETUP.md` after successful generation. It lists remaining configuration and checks for persistence, authorization, secrets, recovery, observability and deployment.
 
 ```sh
