@@ -1863,5 +1863,78 @@
     "steps": [],
     "docs": "https://github.com/search?q=cua-driver&type=repositories",
     "manual": "Install your chosen CUA Driver distribution; grant OS accessibility/screen recording only when needed."
+  },
+  {
+    "id": "gitleaks",
+    "name": "Gitleaks",
+    "group": "core",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "gitleaks"
+    },
+    "install": {
+      "darwin": {
+        "brew": "gitleaks"
+      },
+      "linux": {
+        "brew": "gitleaks"
+      }
+    },
+    "docs": "https://formulae.brew.sh/formula/gitleaks",
+    "steps": []
+  },
+  {
+    "id": "llama-cpp",
+    "name": "llama.cpp",
+    "group": "ai",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "llama-cli"
+    },
+    "install": {
+      "darwin": {
+        "brew": "llama.cpp"
+      },
+      "linux": {
+        "brew": "llama.cpp"
+      }
+    },
+    "docs": "https://formulae.brew.sh/formula/llama.cpp",
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Choose and download a compatible GGUF model separately before running local inference."
+      }
+    ]
+  },
+  {
+    "id": "mobile-mcp",
+    "name": "Mobile MCP",
+    "group": "mobile",
+    "platforms": [
+      "darwin",
+      "linux"
+    ],
+    "detect": {
+      "command": "mcp-server-mobile"
+    },
+    "install": {
+      "all": {
+        "npm": "@mobilenext/mobile-mcp"
+      }
+    },
+    "docs": "https://github.com/mobile-next/mobile-mcp",
+    "steps": [
+      {
+        "id": "setup",
+        "text": "Register mcp-server-mobile in your chosen MCP client. Verify the connected device or simulator using the upstream setup guide."
+      }
+    ]
   }
 ]

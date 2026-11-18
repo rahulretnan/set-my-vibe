@@ -20,7 +20,7 @@ Set My Vibe (`smv`) is an open-source CLI for setting up a development environme
 - **Project starters.** Use shadcn, Better-T-Stack, Cloudflare, Next.js and Expo, with additional Neon and Upstash setup guides.
 - **Portable selections.** Export tool and skill choices without copying credentials or personal dotfiles.
 
-The catalog includes **77 developer tools, 55 public skills, 6 profiles and 7 project recipes**. Browse the [complete catalog](docs/CATALOG.md) for installation methods and sources.
+The catalog includes **80 developer tools, 63 public skills, 6 profiles and 7 project recipes**. Browse the [complete catalog](docs/CATALOG.md) for installation methods and sources.
 
 ## Quick start
 

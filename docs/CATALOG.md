@@ -83,6 +83,9 @@ Source links were checked during initial catalog preparation. Upstream availabil
 | `xtool` | mobile | brew: `xtool-org/tap/xtool` | Manual | [xtool (Swift iOS builds)](https://xtool.sh) |
 | `flutter` | mobile | Manual | Manual | [Flutter / FVM](https://docs.flutter.dev/install) |
 | `cua-driver` | ai | Manual | Manual | [CUA Driver](https://github.com/search?q=cua-driver&type=repositories) |
+| `gitleaks` | core | brew: `gitleaks` | brew: `gitleaks` | [Gitleaks](https://formulae.brew.sh/formula/gitleaks) |
+| `llama-cpp` | ai | brew: `llama.cpp` | brew: `llama.cpp` | [llama.cpp](https://formulae.brew.sh/formula/llama.cpp) |
+| `mobile-mcp` | mobile | npm: `@mobilenext/mobile-mcp` | npm: `@mobilenext/mobile-mcp` | [Mobile MCP](https://github.com/mobile-next/mobile-mcp) |
 
 ## Public skills
 
@@ -125,6 +128,14 @@ The CLI installs only the named skill, not every skill in a source repository. U
 | `figma` | video | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) |
 | `find-animation-opportunities` | design | [emilkowalski/skill](https://github.com/emilkowalski/skill) |
 | `find-skills` | general | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
+| `gsap-core` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-frameworks` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-performance` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-plugins` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-react` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-scrolltrigger` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-timeline` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
+| `gsap-utils` | design | [greensock/gsap-skills](https://github.com/greensock/gsap-skills) |
 | `hyperframes` | video | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) |
 | `hyperframes-cli` | video | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) |
 | `hyperframes-registry` | video | [heygen-com/hyperframes](https://github.com/heygen-com/hyperframes) |

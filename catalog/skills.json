@@ -210,6 +210,54 @@
     "group": "general"
   },
   {
+    "id": "gsap-core",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-core",
+    "group": "design"
+  },
+  {
+    "id": "gsap-frameworks",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-frameworks",
+    "group": "design"
+  },
+  {
+    "id": "gsap-performance",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-performance",
+    "group": "design"
+  },
+  {
+    "id": "gsap-plugins",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-plugins",
+    "group": "design"
+  },
+  {
+    "id": "gsap-react",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-react",
+    "group": "design"
+  },
+  {
+    "id": "gsap-scrolltrigger",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-scrolltrigger",
+    "group": "design"
+  },
+  {
+    "id": "gsap-timeline",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-timeline",
+    "group": "design"
+  },
+  {
+    "id": "gsap-utils",
+    "source": "greensock/gsap-skills",
+    "skill": "gsap-utils",
+    "group": "design"
+  },
+  {
     "id": "hyperframes",
     "source": "heygen-com/hyperframes",
     "skill": "hyperframes",

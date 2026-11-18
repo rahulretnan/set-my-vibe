@@ -123,6 +123,9 @@
     "xcode",
     "xtool",
     "flutter",
-    "cua-driver"
+    "cua-driver",
+    "gitleaks",
+    "llama-cpp",
+    "mobile-mcp"
   ]
 }
