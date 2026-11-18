@@ -25,10 +25,10 @@ The catalog includes **80 developer tools, 91 public skills, 6 profiles and 8 pr
 ## Quick start
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.3/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.4/install.sh | bash
 ```
 
-The installer adds `smv` and opens an interactive selector when a terminal is available. Choose tool IDs, numbers or a profile, review the plan, then confirm installation.
+The installer adds `smv` and opens an interactive selector when a terminal is available. Start with a profile or a custom selection. Use the arrow keys to move, Space to toggle a checkbox, and `/` to filter by tool or category. Press Enter to review the install plan, including required dependencies. Press `b` at the review to edit your selection.
 
 ```sh
 smv setup
@@ -50,7 +50,7 @@ smv configure shell
 <summary>Review the installer first, or update without opening setup</summary>
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.3/install.sh -o install-set-my-vibe.sh
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.4/install.sh -o install-set-my-vibe.sh
 less install-set-my-vibe.sh
 bash install-set-my-vibe.sh --no-setup
 ```
@@ -58,6 +58,18 @@ bash install-set-my-vibe.sh --no-setup
 See the [usage reference](docs/USAGE.md#quick-start) for custom installation paths and running from source. Releases are distributed through GitHub; an npm publication is not assumed.
 
 </details>
+
+## Keep SMV and skills current
+
+```sh
+smv update --check         # Compare against the latest stable GitHub release
+smv update                 # Update SMV and the bundled catalogs
+smv skills update --dry-run
+smv skills update           # Refresh installed skills tracked by SMV
+smv skills update agent-browser --yes
+```
+
+The CLI updater preserves your install location and saved selections. Skill updates use `skills@latest` and the global Skills CLI lock. See the [update guide](docs/USAGE.md#update-smv-and-installed-skills) for scope, automation, and upgrading from an older version.
 
 ## Choose your tools
 

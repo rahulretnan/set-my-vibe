@@ -1,20 +1,24 @@
 #!/usr/bin/env bash
 # Bootstrap set-my-vibe without requiring Node, npm, Homebrew, or Git.
 set -euo pipefail
-VERSION=v0.1.3
+VERSION=v0.1.4
 PREFIX="${SET_MY_VIBE_HOME:-$HOME/.local/share/set-my-vibe}"
 BIN_DIR="$HOME/.local/bin"
 NO_SETUP=0
+BIN_OVERRIDE=''
 usage() { echo 'Usage: bash install.sh [--version vX.Y.Z] [--prefix DIRECTORY] [--no-setup]'; }
 while [ "$#" -gt 0 ]; do
   case "$1" in
     --version) [ "$#" -ge 2 ] || { usage; exit 2; }; VERSION="$2"; shift 2 ;;
     --prefix) [ "$#" -ge 2 ] || { usage; exit 2; }; PREFIX="$2"; BIN_DIR="$PREFIX/bin"; shift 2 ;;
+    --bin-dir) [ "$#" -ge 2 ] || { usage; exit 2; }; BIN_OVERRIDE="$2"; shift 2 ;;
     --no-setup) NO_SETUP=1; shift ;;
     --help|-h) usage; exit 0 ;;
     *) usage; exit 2 ;;
   esac
 done
+BIN_DIR="${BIN_OVERRIDE:-$BIN_DIR}"
+case "$BIN_DIR" in /*) ;; *) echo '--bin-dir must be absolute.' >&2; exit 2;; esac
 [[ "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo 'Invalid release version.' >&2; exit 2; }
 case "$PREFIX" in /*) ;; *) echo '--prefix must be an absolute path.' >&2; exit 2;; esac
 case "$PREFIX$BIN_DIR" in *$'\n'*|*$'\r'*) echo 'Paths cannot contain newlines.' >&2; exit 2;; esac
@@ -92,11 +96,14 @@ done
 import fs from 'node:fs';
 const [prefix,node,dest,binDir]=process.argv.slice(2);
 const q=s=>"'"+s.replaceAll("'","'\\''")+"'";
-const content=`#!/usr/bin/env bash\n# set-my-vibe managed launcher\nexport SET_MY_VIBE_HOME=${q(prefix)}\nexport PATH=${q(node.slice(0,node.lastIndexOf('/')))}:"$PATH"\nexec ${q(node)} ${q(dest+'/bin/set-my-vibe.mjs')} "$@"\n`;
+const content=`#!/usr/bin/env bash\n# set-my-vibe managed launcher\nexport SET_MY_VIBE_HOME=${q(prefix)}\nexport SMV_MANAGED_BIN_DIR=${q(binDir)}\nexport PATH=${q(node.slice(0,node.lastIndexOf('/')))}:"$PATH"\nexec ${q(node)} ${q(dest+'/bin/set-my-vibe.mjs')} "$@"\n`;
 for (const name of ['smv', 'set-my-vibe']) {
   const launcher=binDir+'/'+name;
-  fs.writeFileSync(launcher+'.tmp',content,{mode:0o755,flag:'wx'});
-  fs.renameSync(launcher+'.tmp',launcher);
+  const tmp=fs.mkdtempSync(binDir+'/.smv-launcher-');
+  try {
+    fs.writeFileSync(tmp+'/launcher',content,{mode:0o755,flag:'wx'});
+    fs.renameSync(tmp+'/launcher',launcher);
+  } finally { fs.rmSync(tmp,{recursive:true,force:true}); }
 }
 JS
 echo "Installed $LAUNCHER (also available as set-my-vibe)"

@@ -5,10 +5,10 @@ Detailed installation, configuration, migration and troubleshooting instructions
 ## Quick start
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.3/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.4/install.sh | bash
 ```
 
-This installs the CLI and opens a numbered tool selector when an interactive terminal is available. Choose tool numbers, IDs or a profile name, review the commands, then confirm. It does **not** install the whole catalog by default.
+This installs the CLI and opens a checkbox picker in an interactive terminal. Start with a profile or a custom selection, review the commands, then confirm.
 
 The bootstrap needs Bash, curl, tar, awk and a SHA-256 utility. It uses an existing Node.js 22.20+ or downloads a private Node 24 LTS runtime. It verifies downloaded archives against the publisher's SHA-256 file. It requires no existing npm, Git or Homebrew. Run as your regular user, without `sudo`.
 
@@ -24,7 +24,7 @@ smv configure shell
 For an inspect-first installation:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.3/install.sh -o install-set-my-vibe.sh
+curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.4/install.sh -o install-set-my-vibe.sh
 less install-set-my-vibe.sh
 bash install-set-my-vibe.sh --no-setup
 ~/.local/bin/smv plan --profile web
@@ -149,6 +149,19 @@ npx skills@latest add rahulretnan/set-my-vibe --skill set-my-vibe --global --age
 ```
 
 Then ask your agent to inspect the workstation, propose a tool plan, resolve pending setup and build a project within your scope. The skill keeps installation evidence separate from project readiness. It does not authorize deployment, paid resource creation or copying credentials. Read [SKILL.md](../skills/set-my-vibe/SKILL.md).
+
+## Update SMV and installed skills
+
+- `smv update --check` compares your version with GitHub's latest stable release. Ordinary commands work without checking for updates.
+- `smv update` prompts before downloading and verifying the release archive, then updates both launchers. Use `--yes` to skip the prompt. The updater preserves the installation prefix, launcher directory, and saved selections. It updates the bundled catalogs with the CLI.
+- `smv skills update` runs `npx --yes skills@latest update <skill> --global --yes` for globally installed, SMV-tracked skills whose locked GitHub sources match the catalog. Use skill IDs to target specific updates, `--dry-run` to see the commands, and `--yes` to skip the SMV prompt. Missing or mismatched lock entries need attention before an update can run. Uninstalled targets are not restored by this command. Use `smv skills install` to install them.
+- The release check works from a source checkout too. To apply an update with SMV, use a bootstrap-installed launcher. For an older version without `smv update`, rerun the [current installer](../README.md#quick-start) with `--no-setup`. Pass your existing `--prefix` again if you used one.
+
+## Guided setup
+
+Run `smv setup`, then select a starting profile, your saved selection, or a custom setup. Use the arrow keys to move and Space to select or unselect tools. Press `/` to filter by name or category, then Enter to leave the filter input and continue selecting. Escape clears the filter or exits the picker. Press Enter to review the dependency plan. At the review prompt, `b` returns to the same selection, and `y` starts installation.
+
+For automation, use `smv install --profile NAME --yes` or pass explicit tool IDs. Profiles seed the interactive selections when chosen in the picker. Passing a profile flag directly uses the existing scripted path.
 
 ## Start a project
 

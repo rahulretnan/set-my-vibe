@@ -7,9 +7,15 @@ import { tools, skills, profiles, recipes, root, context, display, installed, su
 import { configureShell } from '../lib/shell.mjs';
 import { projectPlan, projectGuide, executeProject, projectCheck } from '../lib/project.mjs';
 
-const help=`smv / set-my-vibe 0.1.3
+import { pick } from '../lib/picker.mjs';
+import { checkUpdate, applyUpdate } from '../lib/update.mjs';
+import { planSkillUpdates, refreshSkill } from '../lib/skill-update.mjs';
 
-  setup                              Interactive tool selection
+const version = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version;
+const help=`smv / set-my-vibe ${version}
+
+  setup                              Guided checkbox selection
+  update [--check]                   Update CLI and bundled catalogs
   list [--group NAME] [--json]        Browse available tools
   profiles                           List curated tool profiles
   plan [IDs...] [--profile NAME]      Preview dependencies and commands
@@ -24,6 +30,7 @@ const help=`smv / set-my-vibe 0.1.3
   mark TOOL STEP [--undo]             Record/revoke a user-confirmed manual step
   skills list [--group NAME]          Browse public skill sources
   skills plan|install [IDs...]        Select skills (--all or --group supported)
+  skills update [IDs...]             Refresh installed SMV skills (--dry-run supported)
   skills status                      Check saved skill targets
   project list                       Browse project recipes
   project RECIPE NAME [--run]         Preview or execute a new-project generator
@@ -32,10 +39,10 @@ const help=`smv / set-my-vibe 0.1.3
 
 Options: --json, --dry-run, --yes, --profile NAME, --all, --group NAME,
          --agents codex,claude-code,cursor,gemini-cli,antigravity
-Read-only by default except setup/install/resume/configure/mark/skills install.
+Use --check or --dry-run to preview updates without applying them.
 Project generators execute only with --run. No automatic cloud provisioning.
 `;
-const bools=new Set(['json','dry-run','yes','all','verify','detected','undo','run','help','version']);
+const bools=new Set(['json','dry-run','yes','all','verify','detected','undo','run','help','version','check']);
 const values=new Set(['profile','group','agents','cwd','from']);
 export function parse(args) {
  const opts={},pos=[];
@@ -82,12 +89,24 @@ function selected(pos,opts,state) {
 }
 async function main(args) {
  const {opts,pos}=parse(args);const cmd=pos.shift()||'help';
- if(opts.version||cmd==='version'){console.log('0.1.3');return;}
+ if(opts.version||cmd==='version'){console.log(version);return;}
  if(cmd==='help'||opts.help){console.log(help);return;}
  const [major,minor]=process.versions.node.split('.').map(Number);
  if(major<22||(major===22&&minor<20))throw Error('Node.js 22.20+ required. Run install.sh to bootstrap a private runtime.');
  const ctx=context();
  if(!['darwin','linux'].includes(ctx.platform))throw Error('Supported platforms: macOS and Linux. Windows users can use a supported WSL2 Linux distribution.');
+ if(cmd==='update') {
+  assertOptions(opts,['check','yes']);
+  if(pos.length)throw Error('Usage: smv update [--check|--yes]');
+  const update=await checkUpdate(version);
+  console.log(`Installed: ${update.current} · Latest stable: ${update.latest}`);
+  if(!update.available){console.log('No newer stable release available.');return;}
+  if(opts.check)return;
+  assertMutable();
+  await confirm(opts);
+  applyUpdate(update.latest,ctx);
+  return;
+ }
  const state=loadState(ctx);
  if(cmd==='list') {
   assertOptions(opts,['group','json']);
@@ -99,14 +118,33 @@ async function main(args) {
  if(['plan','install','resume','setup'].includes(cmd)) {
   assertOptions(opts,['profile','all','from','dry-run','yes','json']);
   let ids;
+  const guided=cmd==='setup'&&!pos.length&&!opts.profile&&!opts.all&&!opts.from;
   if(cmd==='resume') {if(pos.length||opts.profile||opts.from||opts.all)throw Error('resume uses only saved selection.');ids=resolveSelection(state.selected);if(!ids.length)throw Error('No saved selection. Run setup first.');}
-  else if(cmd==='setup'&&!pos.length&&!opts.profile&&!opts.all&&!opts.from) {
-   console.log(tools.map((t,i)=>`${String(i+1).padStart(2)}. ${t.id.padEnd(21)} ${t.group}`).join('\n'));
-   const answer=(await prompt('Choose tool numbers or IDs separated by commas (or a profile name): ')).trim();
-   ids=Object.hasOwn(profiles,answer)?profiles[answer]:answer.split(/[\s,]+/).filter(Boolean).map(x=>/^\d+$/.test(x)?tools[Number(x)-1]?.id||x:x);
-   ids=resolveSelection(ids);if(!ids.length)throw Error('No tools selected.');
+  else if(guided) {
+   if(opts.json&&!opts['dry-run'])throw Error('--json requires --dry-run for guided setup.');
+   const profile = await pick([
+    {id:'custom',label:'Custom selection'},
+    ...(state.selected.length ? [{id:'saved',label:'Edit saved selection'}] : []),
+    ...Object.entries(profiles).map(([id, entries])=>({id,label:`${id} (${entries.length} tools)`}))
+   ], {title:'Choose a starting point'});
+   if(!profile)throw Error('Setup cancelled.');
+   ids=profile==='saved'?state.selected.filter(id=>tools.some(tool=>tool.id===id)):profiles[profile]||[];
+   const rows=tools.map(t=>({id:t.id,label:`${t.name} [${t.group}] · ${plan([t.id],ctx).at(-1).state}`}));
+   while(true){
+    ids=await pick(rows,{title:'Choose tools to install',initial:ids,multiple:true});
+    if(!ids)throw Error('Setup cancelled.');
+    const preview=plan(ids,ctx);
+    if(opts['dry-run']){showPlan(preview,ctx,opts.json);return;}
+    showPlan(preview,ctx);
+    if(opts.yes)break;
+    const answer=(await prompt('Install this plan? [y] Install / [b] Back / [N] Cancel: ')).trim();
+    if(/^b$/i.test(answer))continue;
+    if(!/^y(es)?$/i.test(answer))throw Error('Setup cancelled.');
+    break;
+   }
+   opts.yes=true;
   } else ids=selected(pos,opts,state);
-  const items=plan(ids,ctx);showPlan(items,ctx,opts.json);
+  const items=plan(ids,ctx);if(!guided)showPlan(items,ctx,opts.json);
   if(cmd==='plan'||opts['dry-run'])return;
   if(opts.json)throw Error('--json is available only with plan or --dry-run for installs.');
   assertMutable();await confirm(opts);const release=lock(ctx);
@@ -138,6 +176,23 @@ async function main(args) {
  }
  if(cmd==='skills') {
   const sub=pos.shift()||'list';
+  if(sub==='update'){
+   assertOptions(opts,['dry-run','yes']);
+   const entries=planSkillUpdates(pos,state,ctx);
+   if(!entries.length){console.log('No installed SMV skills to update.');return;}
+   for(const entry of entries)console.log(`${entry.id}: ${entry.argv?display(entry.argv):entry.reason}`);
+   if(opts['dry-run'])return;
+   if(!entries.some(entry=>entry.argv)){process.exitCode=1;return;}
+   assertMutable();await confirm(opts);
+   const release=lock(ctx);
+   try {
+    for(const entry of planSkillUpdates(pos,loadState(ctx),ctx)){
+     if(!entry.argv){console.error(`${entry.id}: ${entry.reason}`);process.exitCode=1;continue;}
+     if(!refreshSkill(entry,ctx))process.exitCode=1;
+    }
+   } finally {release();}
+   return;
+  }
   assertOptions(opts,['all','group','agents','json','dry-run','yes','from']);
   if(sub==='status'){const rows=skillStatus(state.skills,state.agents,ctx,state.skillTargets);print(opts.json?rows:rows.length?rows.map(r=>`${r.id}: ${r.agents.map(a=>`${a.agent}=${a.installed?'installed':'missing'}`).join(', ')}`).join('\n'):'No skills selected yet.',opts.json);return;}
   let manifestAgents;
@@ -151,7 +206,7 @@ async function main(args) {
   for(const id of pos)if(!skills.some(s=>s.id===id))throw Error(`Unknown skill: ${id}`);
   if(!chosen.length)throw Error('Select skill IDs, --group or --all.');
   if(sub==='list'){print(opts.json?chosen:chosen.map(s=>`${s.id.padEnd(30)} ${s.group.padEnd(9)} ${s.source}`).join('\n'),opts.json);return;}
-  if(!['plan','install'].includes(sub))throw Error('Use skills list, plan, install or status.');
+  if(!['plan','install'].includes(sub))throw Error('Use skills list, plan, install, update or status.');
   const agents=opts.agents?opts.agents.split(','):manifestAgents||['codex','claude-code'];
   const entries=chosen.map(s=>({id:s.id,argv:skillCommand(s,agents)}));
   print(opts.json?entries:entries.map(e=>display(e.argv)).join('\n'),opts.json);
