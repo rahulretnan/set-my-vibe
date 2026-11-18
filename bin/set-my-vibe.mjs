@@ -7,7 +7,6 @@ import { tools, skills, profiles, recipes, root, context, display, installed, su
 import { configureShell } from '../lib/shell.mjs';
 import { projectPlan, projectGuide, executeProject, projectCheck } from '../lib/project.mjs';
 
-import { pick } from '../lib/picker.mjs';
 import { checkUpdate, applyUpdate } from '../lib/update.mjs';
 import { planSkillUpdates, refreshSkill } from '../lib/skill-update.mjs';
 
@@ -122,6 +121,8 @@ async function main(args) {
   if(cmd==='resume') {if(pos.length||opts.profile||opts.from||opts.all)throw Error('resume uses only saved selection.');ids=resolveSelection(state.selected);if(!ids.length)throw Error('No saved selection. Run setup first.');}
   else if(guided) {
    if(opts.json&&!opts['dry-run'])throw Error('--json requires --dry-run for guided setup.');
+   if(!process.stdin.isTTY||!process.stdout.isTTY)throw Error('Interactive terminal required. Run smv install --profile NAME --yes or pass explicit tool IDs.');
+   const { pick } = await import('../lib/picker.mjs');
    const profile = await pick([
     {id:'custom',label:'Custom selection'},
     ...(state.selected.length ? [{id:'saved',label:'Edit saved selection'}] : []),
@@ -137,9 +138,13 @@ async function main(args) {
     if(opts['dry-run']){showPlan(preview,ctx,opts.json);return;}
     showPlan(preview,ctx);
     if(opts.yes)break;
-    const answer=(await prompt('Install this plan? [y] Install / [b] Back / [N] Cancel: ')).trim();
-    if(/^b$/i.test(answer))continue;
-    if(!/^y(es)?$/i.test(answer))throw Error('Setup cancelled.');
+    const action=await pick([
+     {id:'edit',label:'Edit selection'},
+     {id:'install',label:'Install selected tools'},
+     {id:'cancel',label:'Cancel'},
+    ],{title:'Review the installation plan'});
+    if(action==='edit')continue;
+    if(action!=='install')throw Error('Setup cancelled.');
     break;
    }
    opts.yes=true;

@@ -22,11 +22,9 @@ test('checkboxes retain choices through filtering and restore terminal input', a
   input.setRawMode=raw=>{input.isRaw=raw;};
   const items=[{id:'git',label:'Git'},{id:'node',label:'Node languages'},{id:'ripgrep',label:'Ripgrep text'}];
   const selection=pick(items,{title:'Tools',initial:['git'],multiple:true,input,output});
-  for(const [str,key] of [[' ',{name:'space'}],['/',{}],['t',{}],['e',{}],['x',{}],['t',{}],
-    ['\r',{name:'return'}],[' ',{name:'space'}],['\r',{name:'return'}]]) input.emit('keypress',str,key);
-  assert.deepEqual(await selection,['ripgrep']);
+  input.write('text\t\r');
+  assert.deepEqual(await selection,['git','ripgrep']);
   assert.equal(input.isRaw,false);
-  assert.equal(input.listenerCount('keypress'),0);
 });
 
 test('skill update is limited to verified globally installed SMV selections', t => {

@@ -28,7 +28,7 @@ The catalog includes **80 developer tools, 91 public skills, 6 profiles and 8 pr
 curl -fsSL https://raw.githubusercontent.com/rahulretnan/set-my-vibe/v0.1.4/install.sh | bash
 ```
 
-The installer adds `smv` and opens an interactive selector when a terminal is available. Start with a profile or a custom selection. Use the arrow keys to move, Space to toggle a checkbox, and `/` to filter by tool or category. Press Enter to review the install plan, including required dependencies. Press `b` at the review to edit your selection.
+The installer adds `smv` and opens an interactive selector when a terminal is available. Start with a profile or a custom selection. Type to filter by tool or category, move with the arrow keys, and toggle items with Tab or with Space while navigating. Press Enter to review the dependency plan, then choose **Edit selection**, **Install selected tools**, or **Cancel**.
 
 ```sh
 smv setup
@@ -233,9 +233,10 @@ Read the [security policy](SECURITY.md) for credential handling, trust boundarie
 
 Contributions to tool coverage, platform support, skill sources, documentation and tests are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The CLI has no third-party runtime dependencies. With Node.js 22.20+ installed, run:
+With Node.js 22.20+ installed, install the locked dependencies and run the checks:
 
 ```sh
+npm ci
 npm run check
 npm test
 npm run audit:public

@@ -43,6 +43,7 @@ This is a GitHub release. An npm registry publication is not required or assumed
 ```sh
 git clone https://github.com/rahulretnan/set-my-vibe.git
 cd set-my-vibe
+npm ci
 node bin/set-my-vibe.mjs setup
 ```
 
@@ -159,7 +160,9 @@ Then ask your agent to inspect the workstation, propose a tool plan, resolve pen
 
 ## Guided setup
 
-Run `smv setup`, then select a starting profile, your saved selection, or a custom setup. Use the arrow keys to move and Space to select or unselect tools. Press `/` to filter by name or category, then Enter to leave the filter input and continue selecting. Escape clears the filter or exits the picker. Press Enter to review the dependency plan. At the review prompt, `b` returns to the same selection, and `y` starts installation.
+Run `smv setup` and choose a starting profile, your saved selection, or a custom setup. Type to filter the Clack checkbox list by tool ID, name, or category. Use the arrow keys to navigate and Tab to toggle an item. Space also toggles while navigating. Selections remain checked when filtered out. Press Enter to review the dependency plan. Choose **Edit selection** to return with your choices intact, **Install selected tools** to proceed, or **Cancel** to exit. Ctrl+C cancels an active prompt.
+
+The GitHub release bundles the pinned Clack dependency, so the picker can open offline after installation. For a source checkout, run `npm ci` first.
 
 For automation, use `smv install --profile NAME --yes` or pass explicit tool IDs. Profiles seed the interactive selections when chosen in the picker. Passing a profile flag directly uses the existing scripted path.
 
@@ -278,6 +281,6 @@ npm test
 npm run audit:public
 ```
 
-No dependency installation is needed to run the tests. CI runs on macOS and Linux with Node 22.20 and 24, plus Gitleaks. Tests use isolated homes, mocked installers and bootstrap download fixtures. They do not install the full tool catalog or establish full clean-machine compatibility. See [verification evidence](VERIFICATION.md), [contributing](../CONTRIBUTING.md), [security](../SECURITY.md) and [inventory scope](INVENTORY.md).
+Run `npm ci` before running tests from source. CI runs on macOS and Linux with Node 22.20 and 24, plus Gitleaks. Tests use isolated homes, mocked installers and bootstrap download fixtures. They do not install the full tool catalog or establish full clean-machine compatibility. See [verification evidence](VERIFICATION.md), [contributing](../CONTRIBUTING.md), [security](../SECURITY.md) and [inventory scope](INVENTORY.md).
 
 Upstream software and skills execute code under their own licenses and trust boundaries. HTTPS and same-publisher checksums detect corruption, not publisher compromise. This CLI has no telemetry; upstream tools may have their own. Review plans and sources before execution.

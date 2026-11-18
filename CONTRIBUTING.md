@@ -1,8 +1,9 @@
 # Contributing
 
-Requires Node.js 22.20+ and Bash. No npm install is needed; the CLI has no runtime or development dependencies.
+Requires Node.js 22.20+, npm, and Bash. Use the lockfile to install dependencies. The release script includes Clack in the checksummed archive so setup can open offline.
 
 ```sh
+npm ci
 npm run check
 npm test
 npm run audit:public
