@@ -1,6 +1,6 @@
 {
   "name": "set-my-vibe",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Selectable developer workstation setup, skills and project recipes for macOS and Linux.",
   "type": "module",
   "bin": { "smv": "bin/set-my-vibe.mjs", "set-my-vibe": "bin/set-my-vibe.mjs" },
